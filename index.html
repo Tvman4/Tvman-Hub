@@ -16,26 +16,34 @@
 </head>
 <body>
 
-    <!-- Dynamic Spotify Audio Element (Controlled via Lanyard API Stream) -->
-    <audio id="bg-audio" loop></audio>
-
-    <!-- Dynamic Spotify Music Widget -->
-    <div id="music-toggle-btn" class="music-widget interactive-hover" title="Play/Pause Spotify Track">
-        <div class="music-thumb-container">
-            <img id="spotify-album-art" src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Spotify Art" class="music-thumb">
-            <div class="play-overlay">
-                <i id="music-icon" class="fa-solid fa-play"></i>
-            </div>
-        </div>
-        <div class="music-info">
-            <span id="spotify-song-name" class="song-name">Not Listening</span>
-            <span id="spotify-artist-name" class="artist-name">Spotify Inactive</span>
+    <!-- Professional Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h2>Loading Hub...</h2>
+            <p>Syncing Discord & Spotify Data</p>
         </div>
     </div>
 
-    <!-- Dynamic Animated Background -->
+    <!-- Dynamic Spotify Music Widget -->
+    <div id="music-toggle-btn" class="music-widget interactive-hover" title="Spotify Status">
+        <div class="music-thumb-container">
+            <img id="spotify-album-art" src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Spotify Art" class="music-thumb">
+            <div class="play-overlay">
+                <i id="music-icon" class="fa-solid fa-music"></i>
+            </div>
+        </div>
+        <div class="music-info">
+            <span id="spotify-song-name" class="song-name">Connecting...</span>
+            <span id="spotify-artist-name" class="artist-name">Checking Spotify</span>
+        </div>
+    </div>
+
+    <!-- Enhanced Fancy Animated Background -->
     <div class="bg-animation">
-        <div class="red-glow"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="grid-overlay"></div>
     </div>
 
     <!-- Main Container -->
@@ -138,13 +146,13 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">August 2026</span>
-                    <h4>v3.0 - Spotify Integration</h4>
-                    <p>Connected live Spotify Lanyard API tracking to dynamically display album artwork, current song names, and artist details in real time.</p>
+                    <h4>v4.0 - Fancy Redesign & Loading Screen</h4>
+                    <p>Added a sleek startup screen, overhauled background styling with dual moving glow orbs, and improved Lanyard Spotify live extraction code.</p>
                 </div>
                 <div class="update-item">
                     <span class="update-date">August 2026</span>
-                    <h4>v2.5 - Professional Overhaul</h4>
-                    <p>Redesigned UI with glassmorphism effects, added interactive changelog modal, and streamlined Discord status tracking.</p>
+                    <h4>v3.0 - Spotify Integration</h4>
+                    <p>Connected real-time Lanyard API tracking to seamlessly pull your live track details and album artwork.</p>
                 </div>
             </div>
         </div>
