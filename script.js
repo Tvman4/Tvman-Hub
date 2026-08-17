@@ -36,25 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Working Visitor Counter Logic
-    const visitCountElement = document.getElementById('visit-count');
-    let visits = localStorage.getItem('tvman_hub_total_visits');
-    
-    if (!visits) {
-        visits = 1342;
-    } else {
-        visits = parseInt(visits);
-    }
-    
-    if (!sessionStorage.getItem('tvman_counted_session')) {
-        visits += 1;
-        localStorage.setItem('tvman_hub_total_visits', visits);
-        sessionStorage.setItem('tvman_counted_session', 'true');
-    }
-    
-    visitCountElement.textContent = visits.toLocaleString();
-
-    // Live Discord Status Checker via Lanyard API
+    // Pure Discord Status Tracker (Online, Idle, DND, Offline only)
     const discordDot = document.querySelector('.discord-status-dot');
     const discordUserId = "1373549788628254821";
 
@@ -63,8 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(`https://api.lanyard.rest/v1/users/${discordUserId}`);
             const data = await response.json();
             
-            if (data.success) {
-                const status = data.data.discord_status; // 'online', 'idle', 'dnd', 'offline'
+            if (data.success && data.data) {
+                // Extracts strictly your core discord badge state: 'online', 'idle', 'dnd', or 'offline'
+                const status = data.data.discord_status; 
                 
                 if (status === 'online') {
                     discordDot.style.backgroundColor = '#00ff66'; // Green
@@ -79,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     discordDot.style.boxShadow = '0 0 8px #f04747';
                     discordDot.title = "Discord Status: Do Not Disturb";
                 } else {
-                    discordDot.style.backgroundColor = '#747f8d'; // Gray
+                    discordDot.style.backgroundColor = '#747f8d'; // Gray (Offline)
                     discordDot.style.boxShadow = 'none';
                     discordDot.title = "Discord Status: Offline";
                 }
