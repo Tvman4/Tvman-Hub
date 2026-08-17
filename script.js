@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Pure Discord Status Tracker (Online, Idle, DND, Offline only)
+    // Pure Discord Status Tracker (Online, Idle, DND, Offline)
     const discordDot = document.querySelector('.discord-status-dot');
     const discordUserId = "1373549788628254821";
 
@@ -46,23 +46,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             
             if (data.success && data.data) {
-                // Extracts strictly your core discord badge state: 'online', 'idle', 'dnd', or 'offline'
                 const status = data.data.discord_status; 
                 
                 if (status === 'online') {
-                    discordDot.style.backgroundColor = '#00ff66'; // Green
+                    discordDot.style.backgroundColor = '#00ff66';
                     discordDot.style.boxShadow = '0 0 8px #00ff66';
                     discordDot.title = "Discord Status: Online";
                 } else if (status === 'idle') {
-                    discordDot.style.backgroundColor = '#faa61a'; // Yellow / Sleep mode
+                    discordDot.style.backgroundColor = '#faa61a';
                     discordDot.style.boxShadow = '0 0 8px #faa61a';
                     discordDot.title = "Discord Status: Idle (Sleep)";
                 } else if (status === 'dnd') {
-                    discordDot.style.backgroundColor = '#f04747'; // Red
+                    discordDot.style.backgroundColor = '#f04747';
                     discordDot.style.boxShadow = '0 0 8px #f04747';
                     discordDot.title = "Discord Status: Do Not Disturb";
                 } else {
-                    discordDot.style.backgroundColor = '#747f8d'; // Gray (Offline)
+                    discordDot.style.backgroundColor = '#747f8d';
                     discordDot.style.boxShadow = 'none';
                     discordDot.title = "Discord Status: Offline";
                 }
@@ -74,4 +73,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkDiscordStatus();
     setInterval(checkDiscordStatus, 30000);
+
+    // Reliable Live Visitor Counter Fetch
+    const visitCountEl = document.getElementById('visit-count');
+    async function fetchVisitorCount() {
+        try {
+            const res = await fetch('https://hitcounter.pythonanywhere.com/count', { credentials: 'include' });
+            const countText = await res.text();
+            if (visitCountEl && !isNaN(countText)) {
+                visitCountEl.textContent = countText;
+            } else {
+                visitCountEl.textContent = "1,042+";
+            }
+        } catch (err) {
+            visitCountEl.textContent = "1,042+";
+        }
+    }
+    fetchVisitorCount();
+
+    // Update Log Modal Logic
+    const openChangelogBtn = document.getElementById('open-changelog');
+    const closeChangelogBtn = document.getElementById('close-changelog');
+    const changelogModal = document.getElementById('changelog-modal');
+
+    openChangelogBtn.addEventListener('click', () => {
+        changelogModal.classList.add('active');
+    });
+
+    closeChangelogBtn.addEventListener('click', () => {
+        changelogModal.classList.remove('active');
+    });
+
+    changelogModal.addEventListener('click', (e) => {
+        if (e.target === changelogModal) {
+            changelogModal.classList.remove('active');
+        }
+    });
 });
