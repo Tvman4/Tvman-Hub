@@ -395,3 +395,11 @@ body {
 .online-status {
     color: #00ff66;
 }
+
+/* Real Global Visitor Counter Image Styling */
+.real-visit-counter {
+    height: 15px;
+    vertical-align: middle;
+    filter: invert(1) hue-rotate(180deg) brightness(1.2);
+    margin-left: 4px;
+}
