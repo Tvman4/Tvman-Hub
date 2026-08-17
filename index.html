@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tvman | Hub</title>
     
-    <!-- Website Tab Icon -->
+    <!-- Website Tab Icon & Discord Embed Thumbnail (.ico file) -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="favicon.ico">
     
+    <!-- Discord Open Graph Embed Tags (uses favicon.ico for the card image) -->
+    <meta property="og:title" content="Tvman Hub 🌸">
+    <meta property="og:description" content="Check out my website for custom tools, mods, and live status updates!">
+    <meta property="og:image" content="https://tvman4.github.io/Tvman-Hub/favicon.ico">
+    <meta property="og:url" content="https://tvman4.github.io/Tvman-Hub/">
+    <meta name="theme-color" content="#ff1a1a">
+
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -28,7 +35,7 @@
     <!-- Dynamic Spotify Music Widget -->
     <div id="music-toggle-btn" class="music-widget interactive-hover" title="Spotify Status">
         <div class="music-thumb-container">
-            <img id="spotify-album-art" src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Spotify Art" class="music-thumb">
+            <img id="spotify-album-art" src="favicon.ico" alt="Spotify Art" class="music-thumb">
             <div class="play-overlay">
                 <i id="music-icon" class="fa-solid fa-music"></i>
             </div>
@@ -52,7 +59,7 @@
         <!-- Profile Section -->
         <div class="profile-section">
             <div class="pfp-container interactive-hover">
-                <img src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Tvman PFP" class="pfp">
+                <img src="favicon.ico" alt="Tvman PFP" class="pfp">
             </div>
             <h1 class="profile-name">Tvman</h1>
             
@@ -146,13 +153,8 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">August 2026</span>
-                    <h4>v4.0 - Fancy Redesign & Loading Screen</h4>
-                    <p>Added a sleek startup screen, overhauled background styling with dual moving glow orbs, and improved Lanyard Spotify live extraction code.</p>
-                </div>
-                <div class="update-item">
-                    <span class="update-date">August 2026</span>
-                    <h4>v3.0 - Spotify Integration</h4>
-                    <p>Connected real-time Lanyard API tracking to seamlessly pull your live track details and album artwork.</p>
+                    <h4>v4.1 - Icon & Embed Update</h4>
+                    <p>Configured custom .ico support for browser tabs and Discord rich embeds.</p>
                 </div>
             </div>
         </div>
