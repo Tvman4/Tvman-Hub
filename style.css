@@ -14,6 +14,86 @@ body {
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* Floating Music Widget Styling */
+.music-widget {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(25, 3, 3, 0.85);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    border-radius: 30px;
+    padding: 6px 14px 6px 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.25);
+}
+
+.music-widget:hover {
+    background: rgba(140, 0, 0, 0.4);
+    border-color: #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    transform: scale(1.03);
+}
+
+.music-thumb-container {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.music-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 14px;
+    transition: opacity 0.2s ease;
+}
+
+.music-widget.playing .play-overlay {
+    opacity: 0;
+}
+
+.music-widget.playing:hover .play-overlay {
+    opacity: 1;
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.song-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffcccc;
+}
+
+.artist-name {
+    font-size: 11px;
+    color: #b3b3b3;
 }
 
 /* Dynamic Animated Background */
