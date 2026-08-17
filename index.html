@@ -16,23 +16,20 @@
 </head>
 <body>
 
-    <!-- Background Audio Element -->
-    <audio id="bg-audio" loop>
-        <source src="Cynical.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <!-- Dynamic Spotify Audio Element (Controlled via Lanyard API Stream) -->
+    <audio id="bg-audio" loop></audio>
 
-    <!-- Floating Music Widget -->
-    <div id="music-toggle-btn" class="music-widget interactive-hover" title="Play/Pause Music">
+    <!-- Dynamic Spotify Music Widget -->
+    <div id="music-toggle-btn" class="music-widget interactive-hover" title="Play/Pause Spotify Track">
         <div class="music-thumb-container">
-            <img src="IMG_8648.jpeg" alt="Song Icon" class="music-thumb">
+            <img id="spotify-album-art" src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Spotify Art" class="music-thumb">
             <div class="play-overlay">
                 <i id="music-icon" class="fa-solid fa-play"></i>
             </div>
         </div>
         <div class="music-info">
-            <span class="song-name">Cynical</span>
-            <span class="artist-name">by Kaeray</span>
+            <span id="spotify-song-name" class="song-name">Not Listening</span>
+            <span id="spotify-artist-name" class="artist-name">Spotify Inactive</span>
         </div>
     </div>
 
@@ -141,13 +138,13 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">August 2026</span>
-                    <h4>v2.5 - Professional Overhaul</h4>
-                    <p>Redesigned UI with glassmorphism effects, added interactive changelog modal, and streamlined Discord status tracking.</p>
+                    <h4>v3.0 - Spotify Integration</h4>
+                    <p>Connected live Spotify Lanyard API tracking to dynamically display album artwork, current song names, and artist details in real time.</p>
                 </div>
                 <div class="update-item">
-                    <span class="update-date">Previous Release</span>
-                    <h4>v2.0 - Core Hub Launch</h4>
-                    <p>Integrated background audio player, dynamic glowing background effects, and initial Lanyard API connection.</p>
+                    <span class="update-date">August 2026</span>
+                    <h4>v2.5 - Professional Overhaul</h4>
+                    <p>Redesigned UI with glassmorphism effects, added interactive changelog modal, and streamlined Discord status tracking.</p>
                 </div>
             </div>
         </div>
