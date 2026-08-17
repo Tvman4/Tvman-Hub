@@ -5,10 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tvman - Hub</title>
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome for the Discord icon -->
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+    <!-- Background Audio Element -->
+    <audio id="bg-audio" loop>
+        <source src="Cynical.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Player Widget -->
+    <div id="music-toggle-btn" class="music-widget" title="Play/Pause Music">
+        <div class="music-thumb-container">
+            <img src="IMG_8648.jpeg" alt="Song Icon" class="music-thumb">
+            <div class="play-overlay">
+                <i id="music-icon" class="fa-solid fa-play"></i>
+            </div>
+        </div>
+        <div class="music-info">
+            <span class="song-name">Cynical</span>
+            <span class="artist-name">by Kaeray</span>
+        </div>
+    </div>
 
     <!-- Background Animation Container -->
     <div class="bg-animation">
@@ -44,4 +64,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
