@@ -231,11 +231,22 @@ body {
     gap: 8px;
     color: #b3b3b3;
     font-size: 15px;
+    position: relative;
 }
 
 .profile-handle i {
     color: #ff1a1a;
     font-size: 16px;
+}
+
+/* Discord Status Indicator Dot */
+.discord-status-dot {
+    width: 9px;
+    height: 9px;
+    background-color: #747f8d; /* Default offline gray */
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 2px;
 }
 
 .profile-email a {
