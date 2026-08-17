@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tvman - Hub</title>
+    <title>Tvman | Hub</title>
     
     <!-- Website Tab Icon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" href="favicon.ico">
     
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome for icons -->
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Music Player Widget -->
+    <!-- Floating Music Widget -->
     <div id="music-toggle-btn" class="music-widget interactive-hover" title="Play/Pause Music">
         <div class="music-thumb-container">
             <img src="IMG_8648.jpeg" alt="Song Icon" class="music-thumb">
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <!-- Background Animation Container -->
+    <!-- Dynamic Animated Background -->
     <div class="bg-animation">
         <div class="red-glow"></div>
     </div>
@@ -82,7 +82,7 @@
             
             <button class="tab-btn interactive-hover" data-link="discord">
                 <div class="btn-content">
-                    <span class="btn-title">Discord</span>
+                    <span class="btn-title">Discord Community</span>
                 </div>
                 <span class="tag free">Join Community</span>
             </button>
@@ -111,19 +111,46 @@
             </button>
         </div>
 
-        <!-- Stats / Global Visitor Counter Widget -->
+        <!-- Stats & Update Log Widget Bar -->
         <div class="stats-widget">
             <div class="stat-item">
                 <i class="fa-solid fa-eye"></i>
-                <span>Visits: <img src="https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Ftvman4.github.io%2FTvman-Hub%2F" alt="Visit Count" class="real-visit-counter"></span>
+                <span>Visits: <strong id="visit-count" class="stat-value">Loading...</strong></span>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
                 <i class="fa-solid fa-signal"></i>
-                <span>Hub Status: <strong class="online-status">Online</strong></span>
+                <span>Hub: <strong class="online-status">Online</strong></span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item update-trigger interactive-hover" id="open-changelog" title="View Recent Updates">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Updates</span>
             </div>
         </div>
 
+    </div>
+
+    <!-- Update Log Modal Popup -->
+    <div id="changelog-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-code-commit"></i> Website Update Log</h2>
+                <button id="close-changelog" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="update-item">
+                    <span class="update-date">August 2026</span>
+                    <h4>v2.5 - Professional Overhaul</h4>
+                    <p>Redesigned UI with glassmorphism effects, added interactive changelog modal, and streamlined Discord status tracking.</p>
+                </div>
+                <div class="update-item">
+                    <span class="update-date">Previous Release</span>
+                    <h4>v2.0 - Core Hub Launch</h4>
+                    <p>Integrated background audio player, dynamic glowing background effects, and initial Lanyard API connection.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
