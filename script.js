@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const discordInviteLink = "https://discord.gg/chG2a3uyRY";
+    const githubReleasesLink = "https://github.com/Tvman4/TvMenuLib/releases";
     const tabButtons = document.querySelectorAll('.tab-btn');
 
-    // Handle Discord tab redirects
+    // Handle distinct button link behaviors
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
-            window.open(discordInviteLink, '_blank');
+            const linkType = button.getAttribute('data-link');
+            if (linkType === 'github') {
+                window.open(githubReleasesLink, '_blank');
+            } else {
+                window.open(discordInviteLink, '_blank');
+            }
         });
     });
 
