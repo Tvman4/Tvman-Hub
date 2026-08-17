@@ -1,11 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Hide loading screen smoothly once assets/scripts initialize
+    // Animated Loading Screen Text Loop Logic
     const loadingScreen = document.getElementById('loading-screen');
+    const loadingTextEl = document.querySelector('#loading-screen h2');
+    
+    const loadingStates = ["Loading.", "Loading..", "Loading…"];
+    let stateIndex = 0;
+    
+    const loadingInterval = setInterval(() => {
+        if (loadingTextEl) {
+            loadingTextEl.textContent = loadingStates[stateIndex];
+            stateIndex = (stateIndex + 1) % loadingStates.length;
+        }
+    }, 400); // Cycles every 400ms
+
+    // Hide loading screen smoothly once initialization finishes
     setTimeout(() => {
+        clearInterval(loadingInterval);
         if (loadingScreen) {
             loadingScreen.classList.add('fade-out');
         }
-    }, 600);
+    }, 1500);
 
     const discordInviteLink = "https://discord.gg/chG2a3uyRY";
     const githubReleasesLink = "https://github.com/Tvman4/TvMenuLib/releases";
