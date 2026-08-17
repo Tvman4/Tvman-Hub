@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Hide loading screen smoothly once assets/scripts initialize
+    const loadingScreen = document.getElementById('loading-screen');
+    setTimeout(() => {
+        if (loadingScreen) {
+            loadingScreen.classList.add('fade-out');
+        }
+    }, 600);
+
     const discordInviteLink = "https://discord.gg/chG2a3uyRY";
     const githubReleasesLink = "https://github.com/Tvman4/TvMenuLib/releases";
     const tabButtons = document.querySelectorAll('.tab-btn');
@@ -20,12 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const songNameEl = document.getElementById('spotify-song-name');
     const artistNameEl = document.getElementById('spotify-artist-name');
     const albumArtEl = document.getElementById('spotify-album-art');
-    const musicToggleBtn = document.getElementById('music-toggle-btn');
-    const musicIcon = document.getElementById('music-icon');
-    const backgroundAudio = document.getElementById('bg-audio');
+    const musicWidget = document.getElementById('music-toggle-btn');
     
     const discordUserId = "1373549788628254821";
-    let isPlayingAudio = false;
 
     async function fetchLanyardData() {
         try {
@@ -42,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (status === 'idle') {
                     discordDot.style.backgroundColor = '#faa61a';
                     discordDot.style.boxShadow = '0 0 8px #faa61a';
-                    discordDot.title = "Discord Status: Idle (Sleep)";
+                    discordDot.title = "Discord Status: Idle";
                 } else if (status === 'dnd') {
                     discordDot.style.backgroundColor = '#f04747';
                     discordDot.style.boxShadow = '0 0 8px #f04747';
@@ -53,42 +58,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     discordDot.title = "Discord Status: Offline";
                 }
 
-                // 2. Update Spotify Listening Status
-                if (data.data.spotify && data.data.listening_to_spotify) {
+                // 2. Accurate Spotify Listening Status Verification
+                if (data.data.spotify && data.data.listening_to_spotify === true) {
                     const spotify = data.data.spotify;
                     songNameEl.textContent = spotify.song;
                     artistNameEl.textContent = "by " + spotify.artist;
-                    albumArtEl.src = spotify.album_art_url;
+                    
+                    if (spotify.album_art_url) {
+                        albumArtEl.src = spotify.album_art_url;
+                    }
+                    musicWidget.style.borderColor = "#00ff66";
                 } else {
                     songNameEl.textContent = "Not Listening";
                     artistNameEl.textContent = "Spotify Inactive";
                     albumArtEl.src = "CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp";
+                    musicWidget.style.borderColor = "rgba(255, 0, 0, 0.4)";
                 }
             }
         } catch (error) {
             console.error("Could not fetch Lanyard data:", error);
+            songNameEl.textContent = "API Error";
+            artistNameEl.textContent = "Check Connection";
         }
     }
 
     fetchLanyardData();
-    setInterval(fetchLanyardData, 15000);
-
-    // Toggle click for music widget placeholder
-    musicToggleBtn.addEventListener('click', () => {
-        if (backgroundAudio.src) {
-            if (backgroundAudio.paused) {
-                backgroundAudio.play();
-                musicToggleBtn.classList.add('playing');
-                musicIcon.classList.remove('fa-play');
-                musicIcon.classList.add('fa-pause');
-            } else {
-                backgroundAudio.pause();
-                musicToggleBtn.classList.remove('playing');
-                musicIcon.classList.remove('fa-pause');
-                musicIcon.classList.add('fa-play');
-            }
-        }
-    });
+    setInterval(fetchLanyardData, 10000); // Poll every 10 seconds for snappy updates
 
     // Reliable Live Visitor Counter Fetch
     const visitCountEl = document.getElementById('visit-count');
