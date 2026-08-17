@@ -36,4 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
             musicIcon.classList.add('fa-play');
         }
     });
+
+    // Visitor Counter Logic (Stores visits locally and increments on unique session loads)
+    const visitCountElement = document.getElementById('visit-count');
+    let visits = localStorage.getItem('tvman_hub_visits');
+    
+    if (!visits) {
+        visits = 1342; // Base starting count
+    }
+    
+    if (!sessionStorage.getItem('visited_session')) {
+        visits = parseInt(visits) + 1;
+        localStorage.setItem('tvman_hub_visits', visits);
+        sessionStorage.setItem('visited_session', 'true');
+    }
+    
+    visitCountElement.textContent = Number(visits).toLocaleString();
 });
