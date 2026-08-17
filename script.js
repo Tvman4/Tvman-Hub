@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicToggleBtn = document.getElementById('music-toggle-btn');
     const musicIcon = document.getElementById('music-icon');
 
-    // Set default volume
     backgroundAudio.volume = 0.5;
 
     musicToggleBtn.addEventListener('click', () => {
@@ -37,19 +36,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Visitor Counter Logic (Stores visits locally and increments on unique session loads)
+    // Working Visitor Counter Logic
     const visitCountElement = document.getElementById('visit-count');
-    let visits = localStorage.getItem('tvman_hub_visits');
+    let visits = localStorage.getItem('tvman_hub_total_visits');
     
     if (!visits) {
-        visits = 1342; // Base starting count
+        visits = 1342;
+    } else {
+        visits = parseInt(visits);
     }
     
-    if (!sessionStorage.getItem('visited_session')) {
-        visits = parseInt(visits) + 1;
-        localStorage.setItem('tvman_hub_visits', visits);
-        sessionStorage.setItem('visited_session', 'true');
+    if (!sessionStorage.getItem('tvman_counted_session')) {
+        visits += 1;
+        localStorage.setItem('tvman_hub_total_visits', visits);
+        sessionStorage.setItem('tvman_counted_session', 'true');
     }
     
-    visitCountElement.textContent = Number(visits).toLocaleString();
+    visitCountElement.textContent = visits.toLocaleString();
+
+    // Live Discord Status Checker via Lanyard API
+    const discordDot = document.querySelector('.discord-status-dot');
+    const discordUserId = "1373549788628254821";
+
+    async function checkDiscordStatus() {
+        try {
+            const response = await fetch(`https://api.lanyard.rest/v1/users/${discordUserId}`);
+            const data = await response.json();
+            
+            if (data.success) {
+                const status = data.data.discord_status; // 'online', 'idle', 'dnd', 'offline'
+                
+                if (status === 'online') {
+                    discordDot.style.backgroundColor = '#00ff66'; // Green
+                    discordDot.style.boxShadow = '0 0 8px #00ff66';
+                    discordDot.title = "Discord Status: Online";
+                } else if (status === 'idle') {
+                    discordDot.style.backgroundColor = '#faa61a'; // Yellow / Sleep mode
+                    discordDot.style.boxShadow = '0 0 8px #faa61a';
+                    discordDot.title = "Discord Status: Idle (Sleep)";
+                } else if (status === 'dnd') {
+                    discordDot.style.backgroundColor = '#f04747'; // Red
+                    discordDot.style.boxShadow = '0 0 8px #f04747';
+                    discordDot.title = "Discord Status: Do Not Disturb";
+                } else {
+                    discordDot.style.backgroundColor = '#747f8d'; // Gray
+                    discordDot.style.boxShadow = 'none';
+                    discordDot.title = "Discord Status: Offline";
+                }
+            }
+        } catch (error) {
+            console.error("Could not fetch Discord status:", error);
+        }
+    }
+
+    checkDiscordStatus();
+    setInterval(checkDiscordStatus, 30000);
 });
