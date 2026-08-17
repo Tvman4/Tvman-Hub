@@ -29,8 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const artistNameEl = document.getElementById('spotify-artist-name');
     const albumArtEl = document.getElementById('spotify-album-art');
     const musicWidget = document.getElementById('music-toggle-btn');
+    const musicIcon = document.getElementById('music-icon');
     
     const discordUserId = "1373549788628254821";
+    let activeSpotifyUrl = null;
 
     async function fetchLanyardData() {
         try {
@@ -58,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     discordDot.title = "Discord Status: Offline";
                 }
 
-                // 2. Accurate Spotify Listening Status Verification
+                // 2. Accurate Spotify Listening Status Verification & Full Song Link Bind
                 if (data.data.spotify && data.data.listening_to_spotify === true) {
                     const spotify = data.data.spotify;
                     songNameEl.textContent = spotify.song;
@@ -68,11 +70,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         albumArtEl.src = spotify.album_art_url;
                     }
                     musicWidget.style.borderColor = "#00ff66";
+                    musicIcon.className = "fa-solid fa-play";
+                    musicWidget.title = "Click to open full song on Spotify";
+
+                    // Construct direct full track URL using Spotify Track ID
+                    if (spotify.track_id) {
+                        activeSpotifyUrl = `https://open.spotify.com/track/${spotify.track_id}`;
+                    }
                 } else {
                     songNameEl.textContent = "Not Listening";
                     artistNameEl.textContent = "Spotify Inactive";
                     albumArtEl.src = "CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp";
                     musicWidget.style.borderColor = "rgba(255, 0, 0, 0.4)";
+                    musicIcon.className = "fa-solid fa-music";
+                    musicWidget.title = "Spotify Inactive";
+                    activeSpotifyUrl = null;
                 }
             }
         } catch (error) {
@@ -83,7 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fetchLanyardData();
-    setInterval(fetchLanyardData, 10000); // Poll every 10 seconds for snappy updates
+    setInterval(fetchLanyardData, 5000); // Poll every 5 seconds for fast synchronization
+
+    // Open Full Song on Spotify when Widget is Clicked
+    musicWidget.addEventListener('click', () => {
+        if (activeSpotifyUrl) {
+            window.open(activeSpotifyUrl, '_blank');
+        }
+    });
 
     // Reliable Live Visitor Counter Fetch
     const visitCountEl = document.getElementById('visit-count');
