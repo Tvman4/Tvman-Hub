@@ -15,39 +15,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Music Player Logic
-    const backgroundAudio = document.getElementById('bg-audio');
+    // Discord & Spotify Lanyard API Integration
+    const discordDot = document.querySelector('.discord-status-dot');
+    const songNameEl = document.getElementById('spotify-song-name');
+    const artistNameEl = document.getElementById('spotify-artist-name');
+    const albumArtEl = document.getElementById('spotify-album-art');
     const musicToggleBtn = document.getElementById('music-toggle-btn');
     const musicIcon = document.getElementById('music-icon');
-
-    backgroundAudio.volume = 0.5;
-
-    musicToggleBtn.addEventListener('click', () => {
-        if (backgroundAudio.paused) {
-            backgroundAudio.play();
-            musicToggleBtn.classList.add('playing');
-            musicIcon.classList.remove('fa-play');
-            musicIcon.classList.add('fa-pause');
-        } else {
-            backgroundAudio.pause();
-            musicToggleBtn.classList.remove('playing');
-            musicIcon.classList.remove('fa-pause');
-            musicIcon.classList.add('fa-play');
-        }
-    });
-
-    // Pure Discord Status Tracker (Online, Idle, DND, Offline)
-    const discordDot = document.querySelector('.discord-status-dot');
+    const backgroundAudio = document.getElementById('bg-audio');
+    
     const discordUserId = "1373549788628254821";
+    let isPlayingAudio = false;
 
-    async function checkDiscordStatus() {
+    async function fetchLanyardData() {
         try {
             const response = await fetch(`https://api.lanyard.rest/v1/users/${discordUserId}`);
             const data = await response.json();
             
             if (data.success && data.data) {
+                // 1. Update Core Discord Status Dot
                 const status = data.data.discord_status; 
-                
                 if (status === 'online') {
                     discordDot.style.backgroundColor = '#00ff66';
                     discordDot.style.boxShadow = '0 0 8px #00ff66';
@@ -65,14 +52,43 @@ document.addEventListener('DOMContentLoaded', () => {
                     discordDot.style.boxShadow = 'none';
                     discordDot.title = "Discord Status: Offline";
                 }
+
+                // 2. Update Spotify Listening Status
+                if (data.data.spotify && data.data.listening_to_spotify) {
+                    const spotify = data.data.spotify;
+                    songNameEl.textContent = spotify.song;
+                    artistNameEl.textContent = "by " + spotify.artist;
+                    albumArtEl.src = spotify.album_art_url;
+                } else {
+                    songNameEl.textContent = "Not Listening";
+                    artistNameEl.textContent = "Spotify Inactive";
+                    albumArtEl.src = "CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp";
+                }
             }
         } catch (error) {
-            console.error("Could not fetch Discord status:", error);
+            console.error("Could not fetch Lanyard data:", error);
         }
     }
 
-    checkDiscordStatus();
-    setInterval(checkDiscordStatus, 30000);
+    fetchLanyardData();
+    setInterval(fetchLanyardData, 15000);
+
+    // Toggle click for music widget placeholder
+    musicToggleBtn.addEventListener('click', () => {
+        if (backgroundAudio.src) {
+            if (backgroundAudio.paused) {
+                backgroundAudio.play();
+                musicToggleBtn.classList.add('playing');
+                musicIcon.classList.remove('fa-play');
+                musicIcon.classList.add('fa-pause');
+            } else {
+                backgroundAudio.pause();
+                musicToggleBtn.classList.remove('playing');
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+            }
+        }
+    });
 
     // Reliable Live Visitor Counter Fetch
     const visitCountEl = document.getElementById('visit-count');
