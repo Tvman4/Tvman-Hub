@@ -122,7 +122,7 @@
             <a href="#" class="tab-btn faq-trigger" id="open-faq">
                 <div class="btn-content">
                     <span class="btn-title"><i class="fa-solid fa-circle-question" style="color: #ff1a1a;"></i> Frequently Asked Questions</span>
-                    <span class="btn-desc">Answers to common questions</span>
+                    <span class="btn-desc">Answers formatted as a Discord Embed</span>
                 </div>
                 <span class="tag free">FAQ</span>
             </a>
@@ -158,36 +158,58 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">Recent</span>
-                    <h4>Lanyard Integration & Detailed FAQ</h4>
-                    <p>Connected live Lanyard API for Discord presence and added complete on-site answers to the FAQ popup.</p>
+                    <h4>Discord Embed FAQ Style</h4>
+                    <p>Re-designed the FAQ modal to look and feel like a genuine Discord bot message embed.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- FAQ Modal with Actual Answers -->
+    <!-- FAQ Modal styled as a Discord Embed -->
     <div class="modal-overlay" id="faq-modal">
-        <div class="modal-content">
+        <div class="modal-content discord-modal-wrapper">
             <div class="modal-header">
-                <h2><i class="fa-solid fa-circle-question"></i> FAQ & Help</h2>
+                <h2><i class="fa-solid fa-circle-question"></i> Help & Information</h2>
                 <button class="close-btn" id="close-faq">&times;</button>
             </div>
-            <div class="modal-body">
-                <div class="update-item">
-                    <h4>What is TvMenu Lib?</h4>
-                    <p>TvMenu Lib is a custom development library created specifically for building and running mod menus in Gorilla Tag fan games and copy projects. It's completely free to download from GitHub.</p>
-                </div>
-                <div class="update-item">
-                    <h4>Are the Modded APKs safe to use?</h4>
-                    <p>Yes, all custom application modifications provided are tested for Quest. However, always use modded clients responsibly according to game terms.</p>
-                </div>
-                <div class="update-item">
-                    <h4>When is TvMenuPCVR releasing?</h4>
-                    <p>TvMenuPCVR is currently undergoing testing and development. Join the community Discord server to keep track of progress updates and release dates.</p>
-                </div>
-                <div class="update-item">
-                    <h4>How do I get support or contact you?</h4>
-                    <p>You can reach out directly via email at TvmanMods@proton.me or open a support ticket in the official Discord community server.</p>
+            <div class="modal-body discord-embed-container">
+                <!-- Discord Embed Box -->
+                <div class="discord-embed">
+                    <div class="discord-embed-header">
+                        <span class="embed-bot-name">Tvman Bot <span class="embed-bot-tag">BOT</span></span>
+                        <span class="embed-timestamp">Today at 12:00 PM</span>
+                    </div>
+                    
+                    <div class="discord-embed-card">
+                        <div class="embed-title">📋 Tvman Hub — Frequently Asked Questions</div>
+                        <div class="embed-description">Here are answers to the most common questions about mods, releases, and libraries. No redirection required!</div>
+
+                        <div class="embed-fields-grid">
+                            <div class="embed-field">
+                                <div class="embed-field-name">What is TvMenu Lib?</div>
+                                <div class="embed-field-value">A custom library for building and running mod menus in Gorilla Tag copy projects, completely free on GitHub.</div>
+                            </div>
+
+                            <div class="embed-field">
+                                <div class="embed-field-name">Are the Modded APKs safe?</div>
+                                <div class="embed-field-value">Yes, tested for Quest devices. Always use modifications safely according to game guidelines.</div>
+                            </div>
+
+                            <div class="embed-field">
+                                <div class="embed-field-name">When is TvMenuPCVR out?</div>
+                                <div class="embed-field-value">Currently in development and testing. Join the Discord community for updates.</div>
+                            </div>
+
+                            <div class="embed-field">
+                                <div class="embed-field-name">How do I contact support?</div>
+                                <div class="embed-field-value">Reach out via email at TvmanMods@proton.me or open a support ticket in Discord.</div>
+                            </div>
+                        </div>
+
+                        <div class="embed-footer">
+                            <span>Tvman Hub Embed System • v2.4</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
