@@ -1,4 +1,4 @@
-/* Reset and Base Styling */
+/* Core Reset & Setup */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #020000;
+    background-color: #0d0202;
     color: #ffffff;
     min-height: 100vh;
     display: flex;
@@ -15,22 +15,21 @@ body {
     align-items: center;
     overflow-x: hidden;
     position: relative;
-    padding: 30px 0;
 }
 
-/* Professional Loading Screen Styles */
+/* Professional Loading Screen */
 #loading-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #030000;
+    background-color: #0a0101;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 #loading-screen.fade-out {
@@ -39,80 +38,66 @@ body {
 }
 
 .loader-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
     text-align: center;
 }
 
 .loader-spinner {
     width: 50px;
     height: 50px;
-    border: 4px solid rgba(255, 0, 0, 0.15);
+    border: 4px solid rgba(255, 26, 26, 0.2);
     border-top: 4px solid #ff1a1a;
     border-radius: 50%;
-    animation: spinLoader 0.9s linear infinite;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 20px auto;
 }
 
 .loader-content h2 {
-    font-size: 18px;
-    color: #ffcccc;
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 8px;
     letter-spacing: 1px;
 }
 
 .loader-content p {
-    font-size: 12px;
-    color: #888888;
+    font-size: 14px;
+    color: #b3b3b3;
 }
 
-@keyframes spinLoader {
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-/* Global Interactive Hover Effect Class */
-.interactive-hover {
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.interactive-hover:hover {
-    transform: translateY(-3px) scale(1.015);
-}
-
-/* Floating Music Widget Styling */
+/* Dynamic Spotify Music Widget */
 .music-widget {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: rgba(15, 2, 2, 0.85);
+    background: rgba(20, 5, 5, 0.85);
     border: 1px solid rgba(255, 0, 0, 0.4);
-    border-radius: 30px;
-    padding: 6px 14px 6px 6px;
+    backdrop-filter: blur(10px);
+    padding: 8px 14px;
+    border-radius: 50px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    z-index: 10;
-    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.25);
-    backdrop-filter: blur(10px);
-    max-width: 260px;
+    gap: 12px;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .music-widget:hover {
-    background: rgba(60, 0, 0, 0.65);
-    border-color: #ff1a1a;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 0, 0, 0.3);
 }
 
 .music-thumb-container {
+    position: relative;
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    position: relative;
     overflow: hidden;
-    flex-shrink: 0;
-    border: 1px solid rgba(255, 0, 0, 0.3);
 }
 
 .music-thumb {
@@ -131,35 +116,43 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ff4d4d;
-    font-size: 13px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.music-widget:hover .play-overlay {
+    opacity: 1;
+}
+
+.play-overlay i {
+    font-size: 14px;
+    color: #ffffff;
 }
 
 .music-info {
     display: flex;
     flex-direction: column;
-    text-align: left;
-    overflow: hidden;
+    max-width: 150px;
 }
 
 .song-name {
-    font-size: 12px;
-    font-weight: 700;
-    color: #ffcccc;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .artist-name {
-    font-size: 10px;
+    font-size: 11px;
     color: #b3b3b3;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Fancy Animated Background Overhaul */
+/* Background Animation */
 .bg-animation {
     position: fixed;
     top: 0;
@@ -168,90 +161,99 @@ body {
     height: 100%;
     z-index: -1;
     overflow: hidden;
-    background: radial-gradient(circle at center, #140202 0%, #050000 70%, #010000 100%);
+    background: radial-gradient(circle at center, #1a0505 0%, #0d0202 100%);
 }
 
 .glow-orb {
     position: absolute;
     border-radius: 50%;
     filter: blur(120px);
-    z-index: -1;
-    opacity: 0.5;
+    opacity: 0.15;
 }
 
 .orb-1 {
-    width: 500px;
-    height: 500px;
-    background: rgba(255, 0, 0, 0.22);
-    top: 10%;
-    left: 15%;
-    animation: floatOrb1 15s ease-in-out infinite alternate;
+    width: 400px;
+    height: 400px;
+    background: #ff1a1a;
+    top: -100px;
+    left: -100px;
+    animation: floatOrb 10s ease-in-out infinite alternate;
 }
 
 .orb-2 {
-    width: 600px;
-    height: 600px;
-    background: rgba(150, 0, 0, 0.15);
-    bottom: 5%;
-    right: 10%;
-    animation: floatOrb2 18s ease-in-out infinite alternate;
+    width: 500px;
+    height: 500px;
+    background: #8b0000;
+    bottom: -150px;
+    right: -150px;
+    animation: floatOrb 12s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(40px, 40px); }
 }
 
 .grid-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgba(255, 0, 0, 0.02) 1px, transparent 1px), 
-                      linear-gradient(90deg, rgba(255, 0, 0, 0.02) 1px, transparent 1px);
-    background-size: 40px 40px;
-    z-index: -1;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 30px 30px;
 }
 
-@keyframes floatOrb1 {
-    0% { transform: translate(0, 0) scale(0.9); }
-    100% { transform: translate(80px, 100px) scale(1.2); }
-}
-
-@keyframes floatOrb2 {
-    0% { transform: translate(0, 0) scale(1.1); }
-    100% { transform: translate(-100px, -70px) scale(0.85); }
-}
-
-/* Main Container Layout */
+/* Main Layout Container */
 .container {
     width: 100%;
-    max-width: 580px;
-    padding: 20px;
+    max-width: 500px;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 18px;
-    z-index: 1;
+    gap: 25px;
+    z-index: 10;
 }
 
-/* Profile Section Styling */
+/* Profile Section */
 .profile-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
     text-align: center;
+    width: 100%;
+}
+
+/* Logo Above PFP */
+.site-logo-container {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(255, 26, 26, 0.4));
 }
 
 .pfp-container {
-    width: 115px;
-    height: 115px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     padding: 3px;
-    background: linear-gradient(135deg, #ff1a1a, #300000);
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
-    cursor: pointer;
+    background: linear-gradient(135deg, #ff1a1a, #550000);
+    box-shadow: 0 0 25px rgba(255, 26, 26, 0.3);
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
 }
 
 .pfp-container:hover {
-    box-shadow: 0 0 45px rgba(255, 0, 0, 0.75);
+    transform: scale(1.05);
 }
 
 .pfp {
@@ -265,102 +267,102 @@ body {
     font-size: 26px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color: #ffcccc;
+    margin-bottom: 6px;
+    color: #ffffff;
 }
 
 .profile-handle {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
     color: #b3b3b3;
     font-size: 14px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .profile-handle i {
-    color: #ff1a1a;
-    font-size: 15px;
+    color: #5865F2;
+    font-size: 16px;
 }
 
-/* Discord Status Indicator Dot */
 .discord-status-dot {
-    width: 9px;
-    height: 9px;
-    background-color: #747f8d;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
+    background-color: #747f8d;
     display: inline-block;
-    margin-left: 2px;
+}
+
+.discord-activity-text {
+    background: rgba(255, 26, 26, 0.15);
+    border: 1px solid rgba(255, 26, 26, 0.3);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #ff4d4d;
+    font-weight: 500;
 }
 
 .profile-email a {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
-    color: #b3b3b3;
+    color: #cccccc;
     font-size: 13px;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
+    margin-bottom: 15px;
 }
 
 .profile-email a:hover {
-    color: #ff4d4d;
-}
-
-.profile-email i {
     color: #ff1a1a;
-    font-size: 14px;
 }
 
-/* Quick Bio Box Styling */
 .bio-box {
-    margin-top: 4px;
-    padding: 7px 16px;
-    background: rgba(20, 2, 2, 0.8);
-    border: 1px solid rgba(255, 0, 0, 0.25);
-    border-radius: 10px;
-    color: #ffcccc;
-    font-size: 12px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    background: rgba(25, 5, 5, 0.6);
+    border: 1px solid rgba(255, 26, 26, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #e0e0e0;
 }
 
-/* Tabs Container */
+/* Tabs / Navigation Buttons */
 .tabs-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    width: 100%;
 }
 
 .tab-btn {
+    width: 100%;
+    background: rgba(20, 5, 5, 0.8);
+    border: 1px solid rgba(255, 26, 26, 0.25);
+    border-radius: 14px;
+    padding: 14px 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 14px 18px;
-    background: rgba(18, 3, 3, 0.8);
-    border: 1px solid rgba(255, 0, 0, 0.25);
-    border-radius: 14px;
-    color: #ffffff;
     cursor: pointer;
-    box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.04), 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     text-align: left;
-    backdrop-filter: blur(8px);
 }
 
 .tab-btn:hover {
-    background: rgba(70, 2, 2, 0.45);
+    background: rgba(40, 8, 8, 0.9);
     border-color: #ff1a1a;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.4), inset 0 0 15px rgba(255, 0, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 26, 26, 0.2);
 }
 
 .btn-content {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    flex-grow: 1;
-    padding-right: 10px;
+    gap: 3px;
 }
 
 .btn-title {
@@ -370,55 +372,49 @@ body {
 }
 
 .btn-desc {
-    font-size: 11px;
+    font-size: 12px;
     color: #b3b3b3;
-    line-height: 1.2;
 }
 
-/* Tags Styling */
 .tag {
-    font-size: 10px;
-    padding: 4px 9px;
-    border-radius: 7px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
     white-space: nowrap;
-    text-align: center;
-}
-
-.tag.long-tag {
-    white-space: normal;
-    max-width: 150px;
-    line-height: 1.2;
-    font-size: 9px;
 }
 
 .tag.free {
-    background-color: rgba(0, 255, 100, 0.12);
+    background: rgba(0, 255, 102, 0.1);
     color: #00ff66;
-    border: 1px solid rgba(0, 255, 100, 0.25);
+    border: 1px solid rgba(0, 255, 102, 0.2);
 }
 
 .tag.paid {
-    background-color: rgba(255, 0, 0, 0.18);
+    background: rgba(255, 26, 26, 0.1);
     color: #ff4d4d;
-    border: 1px solid rgba(255, 0, 0, 0.35);
+    border: 1px solid rgba(255, 26, 26, 0.2);
 }
 
-/* Stats Widget Bar */
+.tag.long-tag {
+    max-width: 140px;
+    text-align: right;
+    white-space: normal;
+    line-height: 1.2;
+}
+
+/* Stats & Update Log Bar */
 .stats-widget {
+    width: 100%;
+    background: rgba(15, 3, 3, 0.85);
+    border: 1px solid rgba(255, 26, 26, 0.2);
+    border-radius: 12px;
+    padding: 12px 16px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
-    padding: 12px 15px;
-    background: rgba(15, 2, 2, 0.8);
-    border: 1px solid rgba(255, 0, 0, 0.25);
-    border-radius: 14px;
-    font-size: 12px;
-    color: #cccccc;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-size: 13px;
+    color: #b3b3b3;
 }
 
 .stat-item {
@@ -431,26 +427,30 @@ body {
     color: #ff1a1a;
 }
 
-.stat-divider {
-    width: 1px;
-    height: 14px;
-    background: rgba(255, 0, 0, 0.3);
+.stat-value {
+    color: #ffffff;
 }
 
 .online-status {
     color: #00ff66;
 }
 
+.stat-divider {
+    width: 1px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .update-trigger {
     cursor: pointer;
-    color: #ffcccc;
+    transition: color 0.2s ease;
 }
 
 .update-trigger:hover {
-    color: #ff4d4d;
+    color: #ffffff;
 }
 
-/* Update Log Modal Popup Styling */
+/* Update Log Modal Popup */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -458,14 +458,14 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 1000;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .modal-overlay.active {
@@ -474,13 +474,13 @@ body {
 }
 
 .modal-content {
-    background: rgba(20, 3, 3, 0.95);
-    border: 1px solid rgba(255, 0, 0, 0.45);
-    border-radius: 16px;
     width: 90%;
-    max-width: 440px;
+    max-width: 420px;
+    background: #140404;
+    border: 1px solid rgba(255, 26, 26, 0.4);
+    border-radius: 16px;
     padding: 20px;
-    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.35);
+    box-shadow: 0 10px 30px rgba(255, 26, 26, 0.2);
     transform: translateY(20px);
     transition: transform 0.3s ease;
 }
@@ -493,14 +493,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 0, 0, 0.2);
-    padding-bottom: 10px;
     margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
 }
 
 .modal-header h2 {
     font-size: 16px;
-    color: #ffcccc;
+    color: #ffffff;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -520,40 +520,39 @@ body {
 }
 
 .close-btn:hover {
-    color: #ff4d4d;
+    color: #ffffff;
 }
 
 .modal-body {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    max-height: 280px;
+    gap: 12px;
+    max-height: 250px;
     overflow-y: auto;
-    padding-right: 4px;
 }
 
 .update-item {
-    background: rgba(35, 5, 5, 0.6);
+    background: rgba(255, 26, 26, 0.05);
     border-left: 3px solid #ff1a1a;
     padding: 10px 12px;
-    border-radius: 6px;
+    border-radius: 0 8px 8px 0;
 }
 
 .update-date {
-    font-size: 10px;
-    color: #ff8080;
-    font-weight: 700;
+    font-size: 11px;
+    color: #ff4d4d;
+    font-weight: 600;
     text-transform: uppercase;
 }
 
 .update-item h4 {
-    font-size: 13px;
+    font-size: 14px;
     color: #ffffff;
     margin: 2px 0;
 }
 
 .update-item p {
-    font-size: 11px;
+    font-size: 12px;
     color: #b3b3b3;
-    line-height: 1.3;
+    line-height: 1.4;
 }
