@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tvman | Hub</title>
+    
+    <!-- Discord Rich Link Embed Meta Tags -->
+    <meta property="og:title" content="Tvman Hub!">
+    <meta property="og:description" content="Welcome to Tvman Hub! 🩸 Your ultimate, all-in-one destination for Gorilla Tag and Gorilla Tag fan game modding! Dive into a massive community built for creators, modders, and players alike.">
+    <meta property="og:image" content="https://tvman4.github.io/Tvman-Hub/logo.png">
+    <meta property="og:url" content="https://tvman4.github.io/Tvman-Hub/">
+    <meta name="theme-color" content="#8B0000">
+
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -117,11 +125,17 @@
             </a>
         </div>
 
+        <!-- Live Discord Server Widget Embed Box -->
+        <div class="discord-server-embed-box">
+            <div class="embed-box-title"><i class="fa-brands fa-discord"></i> Live Discord Server Widget</div>
+            <iframe src="https://discord.com/widget?id=YOUR_SERVER_ID_HERE&theme=dark" width="100%" height="350" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        </div>
+
         <!-- FAQ Section Button -->
         <div class="tabs-container">
             <a href="#" class="tab-btn faq-trigger" id="open-faq">
                 <div class="btn-content">
-                    <span class="btn-title"><i class="fa-solid fa-circle-question" style="color: #ff1a1a;"></i> Frequently Asked Questions</span>
+                    <span class="btn-title"><i class="fa-solid fa-circle-question" style="color: #8B0000;"></i> Frequently Asked Questions</span>
                     <span class="btn-desc">Answers formatted as a Discord Embed</span>
                 </div>
                 <span class="tag free">FAQ</span>
@@ -158,8 +172,8 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">Recent</span>
-                    <h4>Discord Embed & Status Fix</h4>
-                    <p>Fixed status hanging issues and embedded logo.png banner inside the FAQ Discord preview card.</p>
+                    <h4>Custom Discord Embed & Layout</h4>
+                    <p>Integrated the complete custom Discord embed description, blood red (#8B0000) styling, logo banner, and fixed status bugs.</p>
                 </div>
             </div>
         </div>
@@ -174,45 +188,37 @@
             </div>
             <div class="modal-body discord-embed-container">
                 <!-- Discord Embed Box -->
-                <div class="discord-embed">
+                <div class="discord-embed" style="border-left-color: #8B0000;">
                     <div class="discord-embed-header">
                         <span class="embed-bot-name">Tvman Bot <span class="embed-bot-tag">BOT</span></span>
                         <span class="embed-timestamp">Today at 12:00 PM</span>
                     </div>
                     
-                    <div class="discord-embed-card">
+                    <div class="discord-embed-card" style="border-left: 4px solid #8B0000;">
                         <!-- Banner image using logo.png -->
                         <div class="discord-embed-banner">
                             <img src="logo.png" alt="Tvman Hub Banner">
                         </div>
 
-                        <div class="embed-title">📋 Tvman Hub — Frequently Asked Questions</div>
-                        <div class="embed-description">Here are answers to the most common questions about mods, releases, and libraries. No redirection required!</div>
+                        <div class="embed-title">Tvman Hub! 🩸</div>
+                        <div class="embed-description">
+                            Welcome to Tvman Hub! Your ultimate, all-in-one destination for Gorilla Tag and Gorilla Tag fan game modding! Dive into a massive community built for creators, modders, and players alike.
+                        </div>
 
                         <div class="embed-fields-grid">
                             <div class="embed-field">
-                                <div class="embed-field-name">What is TvMenu Lib?</div>
-                                <div class="embed-field-value">A custom library for building and running mod menus in Gorilla Tag copy projects, completely free on GitHub.</div>
-                            </div>
-
-                            <div class="embed-field">
-                                <div class="embed-field-name">Are the Modded APKs safe?</div>
-                                <div class="embed-field-value">Yes, tested for Quest devices. Always use modifications safely according to game guidelines.</div>
-                            </div>
-
-                            <div class="embed-field">
-                                <div class="embed-field-name">When is TvMenuPCVR out?</div>
-                                <div class="embed-field-value">Currently in development and testing. Join the Discord community for updates.</div>
-                            </div>
-
-                            <div class="embed-field">
-                                <div class="embed-field-name">How do I contact support?</div>
-                                <div class="embed-field-value">Reach out via email at TvmanMods@proton.me or open a support ticket in Discord.</div>
+                                <div class="embed-field-name">✨ What We Offer:</div>
+                                <div class="embed-field-value">
+                                    • 🛠️ <b>Exclusive Mods & Menus:</b> Access cutting-edge tools for Gorilla Tag and popular GTAG fan games (copies).<br>
+                                    • 🤝 <b>Creator Community:</b> Connect with fellow developers, share your projects, and get instant feedback.<br>
+                                    • 🎮 <b>Custom Content:</b> Discover custom maps, cosmetic loaders, utilities, and more.<br>
+                                    • ⚡ <b>Active Support:</b> Friendly staff and tutorials to help you get your mods up and running safely.
+                                </div>
                             </div>
                         </div>
 
                         <div class="embed-footer">
-                            <span>Tvman Hub Embed System • v2.5</span>
+                            <span>Powered by Tvman Hub • Modding Redefined</span>
                         </div>
                     </div>
                 </div>
