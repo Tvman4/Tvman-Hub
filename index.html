@@ -26,7 +26,7 @@
         <div class="grid-overlay"></div>
     </div>
 
-    <!-- Live Spotify Music Widget -->
+    <!-- Dynamic Lanyard Spotify Widget -->
     <div class="music-widget" id="spotify-widget">
         <div class="music-thumb-container">
             <img id="spotify-album-art" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=100&auto=format&fit=crop" alt="Album Art" class="music-thumb">
@@ -58,9 +58,9 @@
 
             <div class="profile-handle">
                 <i class="fa-brands fa-discord"></i>
-                <span>@tvmangt</span>
-                <span class="discord-status-dot" id="discord-dot"></span>
-                <span class="discord-activity-text">Working On TvMenu</span>
+                <span id="discord-username">@tvmangt</span>
+                <span class="discord-status-dot" id="discord-status-dot"></span>
+                <span class="discord-activity-text" id="discord-activity">Working On TvMenu</span>
             </div>
 
             <div class="profile-email">
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <!-- Navigation Tabs / Buttons (Handled via script.js redirects) -->
+        <!-- Navigation Tabs / Buttons -->
         <div class="tabs-container">
             <a href="#" class="tab-btn" data-link="discord">
                 <div class="btn-content">
@@ -117,7 +117,18 @@
             </a>
         </div>
 
-        <!-- Stats & Update Log Bar with Trackers -->
+        <!-- FAQ Section Button -->
+        <div class="tabs-container">
+            <a href="#" class="tab-btn faq-trigger" id="open-faq">
+                <div class="btn-content">
+                    <span class="btn-title"><i class="fa-solid fa-circle-question" style="color: #ff1a1a;"></i> Frequently Asked Questions</span>
+                    <span class="btn-desc">Common questions & help</span>
+                </div>
+                <span class="tag free">FAQ</span>
+            </a>
+        </div>
+
+        <!-- Stats & Update Log Bar -->
         <div class="stats-widget">
             <div class="stat-item">
                 <i class="fa-solid fa-users"></i>
@@ -147,8 +158,32 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">Recent</span>
-                    <h4>Full Integration & Trackers</h4>
-                    <p>Restored profile picture, 2x logo scaling, live visitor counts, and automated script links.</p>
+                    <h4>Lanyard Integration & FAQ</h4>
+                    <p>Connected live Lanyard API for real-time Discord presence, custom activities, and Spotify tracking.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Modal -->
+    <div class="modal-overlay" id="faq-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-circle-question"></i> FAQ</h2>
+                <button class="close-btn" id="close-faq">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="update-item">
+                    <h4>How do I get the modded APKs?</h4>
+                    <p>Join our official Discord community via the link buttons to claim and download available APKs.</p>
+                </div>
+                <div class="update-item">
+                    <h4>Is TvMenu Lib free to use?</h4>
+                    <p>Yes! TvMenu Lib is completely free. You can grab the release files directly via the GitHub link button.</p>
+                </div>
+                <div class="update-item">
+                    <h4>How do I purchase paid items?</h4>
+                    <p>Open a ticket or check out the store channels in our official Discord server for safe transactions.</p>
                 </div>
             </div>
         </div>
