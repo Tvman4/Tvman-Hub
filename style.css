@@ -224,10 +224,10 @@ body {
     width: 100%;
 }
 
-/* Fixed Wide Logo Container Dimensions for logo.png */
+/* Increased dimensions for a larger logo display */
 .site-logo-container {
-    width: 180px;
-    height: 55px;
+    width: 280px;
+    height: 90px;
     margin-bottom: 12px;
     display: flex;
     justify-content: center;
@@ -238,7 +238,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(255, 26, 26, 0.5));
+    filter: drop-shadow(0 0 12px rgba(255, 26, 26, 0.6));
 }
 
 .pfp-container {
@@ -282,7 +282,6 @@ body {
     justify-content: center;
 }
 
-/* Discord logo set to red */
 .profile-handle i.fa-discord {
     color: #ff1a1a !important;
     font-size: 16px;
@@ -317,7 +316,6 @@ body {
     margin-bottom: 15px;
 }
 
-/* Mail logo set to red */
 .profile-email a i.fa-envelope {
     color: #ff1a1a !important;
 }
