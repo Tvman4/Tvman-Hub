@@ -121,26 +121,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     statusDotEl.className = `discord-status-dot ${data.discord_status}`;
                 }
 
-                // Fetch real Discord Custom Status or Fallback to status state
+                // Robust Status Handling (Prevents getting stuck)
                 if (activityTextEl) {
-                    if (data.active_on_discord_mobile || data.active_on_discord_desktop || data.active_on_discord_web) {
-                        // Check if a custom status exists in Lanyard data
-                        if (data.custom_status && data.custom_status.state) {
-                            activityTextEl.innerText = data.custom_status.state;
-                        } else if (data.activities && data.activities.length > 0) {
-                            // Filter out Spotify if present to get the first actual activity/game
-                            const nonSpotify = data.activities.find(act => act.name !== 'Spotify');
-                            if (nonSpotify) {
-                                activityTextEl.innerText = nonSpotify.name;
-                            } else {
-                                activityTextEl.innerText = data.discord_status.toUpperCase();
-                            }
-                        } else {
-                            activityTextEl.innerText = data.discord_status.toUpperCase();
+                    let statusText = '';
+
+                    // Prioritize custom status if written
+                    if (data.custom_status && data.custom_status.state) {
+                        statusText = data.custom_status.state;
+                    } 
+                    // Otherwise look for standard activities/games (ignoring Spotify)
+                    else if (data.activities && data.activities.length > 0) {
+                        const activeGame = data.activities.find(act => act.name !== 'Spotify' && act.type !== 4);
+                        if (activeGame) {
+                            statusText = activeGame.name;
                         }
-                    } else {
-                        activityTextEl.innerText = 'Offline';
                     }
+
+                    // Fallback to state condition if nothing else is populated
+                    if (!statusText) {
+                        statusText = data.discord_status ? data.discord_status.toUpperCase() : 'ONLINE';
+                    }
+
+                    activityTextEl.innerText = statusText;
                 }
 
                 // 2. Update Spotify Widget
