@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     checkRepoActions();
     setInterval(checkRepoActions, 30000);
 
-    // Lanyard API Integration for Discord Status & Spotify Tracking
+    // Lanyard API Integration for Discord Status, Custom Status & Spotify Tracking
     const LANYARD_API = 'https://api.lanyard.rest/v1/users/1373549788628254821';
 
     async function fetchLanyardData() {
@@ -121,17 +121,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     statusDotEl.className = `discord-status-dot ${data.discord_status}`;
                 }
 
-                // Custom Activity or Game
+                // Fetch real Discord Custom Status or Fallback to status state
                 if (activityTextEl) {
-                    if (data.activities && data.activities.length > 0) {
-                        const nonSpotify = data.activities.find(act => act.name !== 'Spotify');
-                        if (nonSpotify) {
-                            activityTextEl.innerText = nonSpotify.name;
-                        } else if (data.discord_status) {
+                    if (data.active_on_discord_mobile || data.active_on_discord_desktop || data.active_on_discord_web) {
+                        // Check if a custom status exists in Lanyard data
+                        if (data.custom_status && data.custom_status.state) {
+                            activityTextEl.innerText = data.custom_status.state;
+                        } else if (data.activities && data.activities.length > 0) {
+                            // Filter out Spotify if present to get the first actual activity/game
+                            const nonSpotify = data.activities.find(act => act.name !== 'Spotify');
+                            if (nonSpotify) {
+                                activityTextEl.innerText = nonSpotify.name;
+                            } else {
+                                activityTextEl.innerText = data.discord_status.toUpperCase();
+                            }
+                        } else {
                             activityTextEl.innerText = data.discord_status.toUpperCase();
                         }
                     } else {
-                        activityTextEl.innerText = data.discord_status.toUpperCase();
+                        activityTextEl.innerText = 'Offline';
                     }
                 }
 
