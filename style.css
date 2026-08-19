@@ -224,11 +224,11 @@ body {
     width: 100%;
 }
 
-/* Logo Above PFP */
+/* Fixed Wide Logo Container Dimensions for logo.png */
 .site-logo-container {
-    width: 110px;
-    height: 110px;
-    margin-bottom: 15px;
+    width: 180px;
+    height: 55px;
+    margin-bottom: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,7 +238,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 0 12px rgba(255, 26, 26, 0.5));
+    filter: drop-shadow(0 0 10px rgba(255, 26, 26, 0.5));
 }
 
 .pfp-container {
@@ -282,7 +282,7 @@ body {
     justify-content: center;
 }
 
-/* Force Discord logo to red */
+/* Discord logo set to red */
 .profile-handle i.fa-discord {
     color: #ff1a1a !important;
     font-size: 16px;
@@ -317,7 +317,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* Force Mail logo to red */
+/* Mail logo set to red */
 .profile-email a i.fa-envelope {
     color: #ff1a1a !important;
 }
