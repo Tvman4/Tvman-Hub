@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Custom Activity or Game
                 if (activityTextEl) {
                     if (data.activities && data.activities.length > 0) {
-                        // Find a non-spotify activity if possible, or show the first active one
                         const nonSpotify = data.activities.find(act => act.name !== 'Spotify');
                         if (nonSpotify) {
                             activityTextEl.innerText = nonSpotify.name;
@@ -159,5 +158,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fetchLanyardData();
-    setInterval(fetchLanyardData, 15000); // Poll every 15 seconds for live updates
+    setInterval(fetchLanyardData, 15000);
 });
