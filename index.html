@@ -4,20 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tvman | Hub</title>
-    
-    <!-- Standard & Apple Specific Favicon Overrides -->
-    <link rel="icon" type="image/x-icon" href="https://tvman4.github.io/Tvman-Hub/favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="https://tvman4.github.io/Tvman-Hub/favicon.ico">
-    <link rel="apple-touch-icon" href="https://tvman4.github.io/Tvman-Hub/favicon.ico">
-    <link rel="mask-icon" href="https://tvman4.github.io/Tvman-Hub/favicon.ico" color="#ff1a1a">
-    
-    <!-- Discord Open Graph Embed Tags (With v=2 Query Support) -->
-    <meta property="og:title" content="Tvman Hub">
-    <meta property="og:description" content="Check out my website for custom tools, mods, and live status updates!">
-    <meta property="og:image" content="https://tvman4.github.io/Tvman-Hub/favicon.ico">
-    <meta property="og:url" content="https://tvman4.github.io/Tvman-Hub/?v=2">
-    <meta name="theme-color" content="#ff1a1a">
-
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -28,30 +14,30 @@
     <div id="loading-screen">
         <div class="loader-content">
             <div class="loader-spinner"></div>
-            <h2>Loading.</h2>
-            <p>Syncing Discord & Spotify Data</p>
+            <h2>Tvman Hub</h2>
+            <p>Loading experience...</p>
         </div>
     </div>
 
-    <!-- Dynamic Spotify Music Widget -->
-    <div id="music-toggle-btn" class="music-widget interactive-hover" title="Spotify Status">
-        <div class="music-thumb-container">
-            <img id="spotify-album-art" src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Spotify Art" class="music-thumb">
-            <div class="play-overlay">
-                <i id="music-icon" class="fa-solid fa-music"></i>
-            </div>
-        </div>
-        <div class="music-info">
-            <span id="spotify-song-name" class="song-name">Connecting...</span>
-            <span id="spotify-artist-name" class="artist-name">Checking Spotify</span>
-        </div>
-    </div>
-
-    <!-- Enhanced Fancy Animated Background -->
+    <!-- Background Grid & Animation Orbs -->
     <div class="bg-animation">
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
         <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Dynamic Spotify Music Widget (Inactive State Placeholder) -->
+    <div class="music-widget">
+        <div class="music-thumb-container">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=100&auto=format&fit=crop" alt="Album Art" class="music-thumb">
+            <div class="play-overlay">
+                <i class="fa-solid fa-music"></i>
+            </div>
+        </div>
+        <div class="music-info">
+            <span class="song-name">Not Listening</span>
+            <span class="artist-name">Spotify Inactive</span>
+        </div>
     </div>
 
     <!-- Main Container -->
@@ -59,109 +45,110 @@
         
         <!-- Profile Section -->
         <div class="profile-section">
-            <!-- Logo Above Profile Picture -->
+            <!-- 2x Larger Logo -->
             <div class="site-logo-container">
-                <img src="logo.png" alt="Tvman Logo" class="site-logo">
+                <img src="logo.png" alt="Tvman Hub Logo" class="site-logo">
             </div>
 
-            <div class="pfp-container interactive-hover">
-                <img src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Tvman PFP" class="pfp">
+            <div class="pfp-container">
+                <img src="pfp.png" alt="Profile Picture" class="pfp">
             </div>
+
             <h1 class="profile-name">Tvman</h1>
-            
-            <!-- Discord Handle with Status Indicator & Custom Activity Status Text -->
+
             <div class="profile-handle">
                 <i class="fa-brands fa-discord"></i>
                 <span>@tvmangt</span>
-                <span class="discord-status-dot" title="Discord Status: Checking..."></span>
+                <span class="discord-status-dot"></span>
                 <span class="discord-activity-text">Working On TvMenu</span>
             </div>
 
             <div class="profile-email">
                 <a href="mailto:TvmanMods@proton.me">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>TvmanMods@proton.me</span>
+                    <i class="fa-solid fa-envelope"></i> TvmanMods@proton.me
                 </a>
             </div>
-            
-            <!-- Quick Bio Box -->
+
             <div class="bio-box">
-                <p>Solo Quest Modder And Game Maker</p>
+                Solo Quest Modder And Game Maker
             </div>
         </div>
 
-        <!-- Navigation Buttons -->
+        <!-- Navigation Tabs / Buttons -->
         <div class="tabs-container">
-            <button class="tab-btn interactive-hover" data-link="discord">
+            <a href="https://discord.gg/yourinvite" target="_blank" class="tab-btn">
                 <div class="btn-content">
                     <span class="btn-title">Modded Apks</span>
+                    <span class="btn-desc">Custom application modifications</span>
                 </div>
-                <span class="tag free">Free/Get By Discord</span>
-            </button>
-            
-            <button class="tab-btn interactive-hover" data-link="discord">
+                <span class="tag free long-tag">Free/Get By Discord</span>
+            </a>
+
+            <a href="https://discord.gg/yourinvite" target="_blank" class="tab-btn">
                 <div class="btn-content">
                     <span class="btn-title">Discord Community</span>
+                    <span class="btn-desc">Join our growing server</span>
                 </div>
                 <span class="tag free">Join Community</span>
-            </button>
-            
-            <button class="tab-btn interactive-hover" data-link="github">
+            </a>
+
+            <a href="#" class="tab-btn">
                 <div class="btn-content">
                     <span class="btn-title">TvMenu Lib</span>
                     <span class="btn-desc">Lib for modding gtag copys</span>
                 </div>
                 <span class="tag free">FREE</span>
-            </button>
-            
-            <button class="tab-btn interactive-hover" data-link="discord">
+            </a>
+
+            <a href="https://discord.gg/yourinvite" target="_blank" class="tab-btn">
                 <div class="btn-content">
                     <span class="btn-title">TvMenuPCVR</span>
                     <span class="btn-desc">Not Tested And Coming Soon! Join The Discord For More Info!</span>
                 </div>
                 <span class="tag paid">Paid/Buy at discord</span>
-            </button>
-            
-            <button class="tab-btn interactive-hover" data-link="discord">
+            </a>
+
+            <a href="https://discord.gg/yourinvite" target="_blank" class="tab-btn">
                 <div class="btn-content">
                     <span class="btn-title">Modded Gtag By Tvman</span>
+                    <span class="btn-desc">Quest Mods, Coming Soon! And Join Discord For More Info!</span>
                 </div>
-                <span class="tag paid long-tag">Quest Mods, Coming Soon! And Join Discord For More Info!</span>
-            </button>
+                <span class="tag paid">Get Info</span>
+            </a>
         </div>
 
-        <!-- Stats & Update Log Widget Bar -->
+        <!-- Stats & Update Log Bar with GitHub Actions Tracker -->
         <div class="stats-widget">
             <div class="stat-item">
-                <i class="fa-solid fa-eye"></i>
-                <span>Visits: <strong id="visit-count" class="stat-value">Loading...</strong></span>
+                <i class="fa-solid fa-server"></i>
+                <span id="hub-status" class="stat-value online-status">Hub: Online</span>
             </div>
             <div class="stat-divider"></div>
-            <div class="stat-item">
-                <i class="fa-solid fa-signal"></i>
-                <span>Hub: <strong class="online-status">Online</strong></span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item update-trigger interactive-hover" id="open-changelog" title="View Recent Updates">
+            <div class="stat-item update-trigger" id="open-updates">
                 <i class="fa-solid fa-clock-rotate-left"></i>
-                <span>Updates</span>
+                <span>Update Log</span>
             </div>
         </div>
 
     </div>
 
-    <!-- Update Log Modal Popup -->
-    <div id="changelog-modal" class="modal-overlay">
+    <!-- Update Log Modal -->
+    <div class="modal-overlay" id="update-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2><i class="fa-solid fa-code-commit"></i> Website Update Log</h2>
-                <button id="close-changelog" class="close-btn">&times;</button>
+                <h2><i class="fa-solid fa-terminal"></i> Update History</h2>
+                <button class="close-btn" id="close-updates">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="update-item">
-                    <span class="update-date">August 2026</span>
-                    <h4>v4.9 - Logo & Status Updates</h4>
-                    <p>Added custom logo above PFP, status text badge, and updated PCVR description.</p>
+                    <span class="update-date">Recent</span>
+                    <h4>UI Redesign & GitHub Tracker</h4>
+                    <p>Scaled up branding logo and integrated live automation status checking.</p>
+                </div>
+                <div class="update-item">
+                    <span class="update-date">V2.0</span>
+                    <h4>Red Theme Integration</h4>
+                    <p>Overhauled color palettes, glow orbs, and glassmorphism styling elements.</p>
                 </div>
             </div>
         </div>
