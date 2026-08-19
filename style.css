@@ -294,7 +294,7 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #747f8d; /* Default Offline */
+    background-color: #747f8d;
     display: inline-block;
 }
 
@@ -552,7 +552,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-height: 250px;
+    max-height: 280px;
     overflow-y: auto;
 }
 
