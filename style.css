@@ -45,8 +45,8 @@ body {
 .loader-spinner {
     width: 50px;
     height: 50px;
-    border: 4px solid rgba(255, 26, 26, 0.2);
-    border-top: 4px solid #ff1a1a;
+    border: 4px solid rgba(139, 0, 0, 0.2);
+    border-top: 4px solid #8B0000;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
     margin: 0 auto 20px auto;
@@ -75,7 +75,7 @@ body {
     top: 20px;
     right: 20px;
     background: rgba(20, 5, 5, 0.85);
-    border: 1px solid rgba(255, 0, 0, 0.4);
+    border: 1px solid rgba(139, 0, 0, 0.4);
     backdrop-filter: blur(10px);
     padding: 8px 14px;
     border-radius: 50px;
@@ -83,14 +83,14 @@ body {
     align-items: center;
     gap: 12px;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(139, 0, 0, 0.15);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .music-widget:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 6px 25px rgba(139, 0, 0, 0.3);
 }
 
 .music-thumb-container {
@@ -175,7 +175,7 @@ body {
 .orb-1 {
     width: 400px;
     height: 400px;
-    background: #ff1a1a;
+    background: #8B0000;
     top: -100px;
     left: -100px;
     animation: floatOrb 10s ease-in-out infinite alternate;
@@ -184,7 +184,7 @@ body {
 .orb-2 {
     width: 500px;
     height: 500px;
-    background: #8b0000;
+    background: #550000;
     bottom: -150px;
     right: -150px;
     animation: floatOrb 12s ease-in-out infinite alternate-reverse;
@@ -225,7 +225,6 @@ body {
     width: 100%;
 }
 
-/* Logo scaled 2x larger */
 .site-logo-container {
     width: 560px;
     height: 180px;
@@ -240,7 +239,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 0 15px rgba(255, 26, 26, 0.6));
+    filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.6));
 }
 
 .pfp-container {
@@ -248,8 +247,8 @@ body {
     height: 110px;
     border-radius: 50%;
     padding: 3px;
-    background: linear-gradient(135deg, #ff1a1a, #550000);
-    box-shadow: 0 0 25px rgba(255, 26, 26, 0.3);
+    background: linear-gradient(135deg, #8B0000, #330000);
+    box-shadow: 0 0 25px rgba(139, 0, 0, 0.3);
     margin-bottom: 15px;
     transition: transform 0.3s ease;
 }
@@ -285,11 +284,10 @@ body {
 }
 
 .profile-handle i.fa-discord {
-    color: #ff1a1a !important;
+    color: #8B0000 !important;
     font-size: 16px;
 }
 
-/* Discord Online / Offline Status Dot Colors */
 .discord-status-dot {
     width: 10px;
     height: 10px;
@@ -316,12 +314,12 @@ body {
 }
 
 .discord-activity-text {
-    background: rgba(255, 26, 26, 0.15);
-    border: 1px solid rgba(255, 26, 26, 0.3);
+    background: rgba(139, 0, 0, 0.15);
+    border: 1px solid rgba(139, 0, 0, 0.3);
     padding: 2px 8px;
     border-radius: 12px;
     font-size: 12px;
-    color: #ff4d4d;
+    color: #ff6666;
     font-weight: 500;
 }
 
@@ -337,16 +335,16 @@ body {
 }
 
 .profile-email a i.fa-envelope {
-    color: #ff1a1a !important;
+    color: #8B0000 !important;
 }
 
 .profile-email a:hover {
-    color: #ff1a1a;
+    color: #8B0000;
 }
 
 .bio-box {
     background: rgba(25, 5, 5, 0.6);
-    border: 1px solid rgba(255, 26, 26, 0.2);
+    border: 1px solid rgba(139, 0, 0, 0.2);
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 13px;
@@ -364,7 +362,7 @@ body {
 .tab-btn {
     width: 100%;
     background: rgba(20, 5, 5, 0.8);
-    border: 1px solid rgba(255, 26, 26, 0.25);
+    border: 1px solid rgba(139, 0, 0, 0.25);
     border-radius: 14px;
     padding: 14px 18px;
     display: flex;
@@ -379,9 +377,9 @@ body {
 
 .tab-btn:hover {
     background: rgba(40, 8, 8, 0.9);
-    border-color: #ff1a1a;
+    border-color: #8B0000;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 26, 26, 0.2);
+    box-shadow: 0 6px 20px rgba(139, 0, 0, 0.2);
 }
 
 .btn-content {
@@ -416,9 +414,9 @@ body {
 }
 
 .tag.paid {
-    background: rgba(255, 26, 26, 0.1);
-    color: #ff4d4d;
-    border: 1px solid rgba(255, 26, 26, 0.2);
+    background: rgba(139, 0, 0, 0.15);
+    color: #ff6666;
+    border: 1px solid rgba(139, 0, 0, 0.3);
 }
 
 .tag.long-tag {
@@ -428,11 +426,45 @@ body {
     line-height: 1.2;
 }
 
+/* Discord Server Widget Iframe Container Styling */
+.discord-server-embed-box {
+    width: 100%;
+    background: rgba(20, 5, 5, 0.85);
+    border: 1px solid rgba(139, 0, 0, 0.3);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.embed-box-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 4px;
+}
+
+.embed-box-title i {
+    color: #8B0000;
+    font-size: 15px;
+}
+
+.discord-server-embed-box iframe {
+    border-radius: 8px;
+    border: none;
+    background-color: #2b2d31;
+}
+
 /* Stats & Update Log Bar */
 .stats-widget {
     width: 100%;
     background: rgba(15, 3, 3, 0.85);
-    border: 1px solid rgba(255, 26, 26, 0.2);
+    border: 1px solid rgba(139, 0, 0, 0.2);
     border-radius: 12px;
     padding: 12px 16px;
     display: flex;
@@ -449,7 +481,7 @@ body {
 }
 
 .stat-item i {
-    color: #ff1a1a;
+    color: #8B0000;
 }
 
 .stat-value {
@@ -502,10 +534,10 @@ body {
     width: 90%;
     max-width: 420px;
     background: #140404;
-    border: 1px solid rgba(255, 26, 26, 0.4);
+    border: 1px solid rgba(139, 0, 0, 0.4);
     border-radius: 16px;
     padding: 20px;
-    box-shadow: 0 10px 30px rgba(255, 26, 26, 0.2);
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.2);
     transform: translateY(20px);
     transition: transform 0.3s ease;
 }
@@ -532,7 +564,7 @@ body {
 }
 
 .modal-header h2 i {
-    color: #ff1a1a;
+    color: #8B0000;
 }
 
 .close-btn {
@@ -557,15 +589,15 @@ body {
 }
 
 .update-item {
-    background: rgba(255, 26, 26, 0.05);
-    border-left: 3px solid #ff1a1a;
+    background: rgba(139, 0, 0, 0.05);
+    border-left: 3px solid #8B0000;
     padding: 10px 12px;
     border-radius: 0 8px 8px 0;
 }
 
 .update-date {
     font-size: 11px;
-    color: #ff4d4d;
+    color: #ff6666;
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -585,7 +617,7 @@ body {
 /* Custom Discord Embed Styling */
 .discord-modal-wrapper {
     max-width: 480px !important;
-    background: #313338 !important; /* Discord Dark Theme Chat Background */
+    background: #313338 !important;
     border: none !important;
     border-radius: 8px !important;
     padding: 16px !important;
@@ -625,8 +657,8 @@ body {
 }
 
 .discord-embed-card {
-    background-color: #2b2d31; /* Discord Embed Box Background */
-    border-left: 4px solid #ff1a1a; /* Accent bar styled to match your theme */
+    background-color: #2b2d31;
+    border-left: 4px solid #8B0000;
     border-radius: 0 4px 4px 0;
     padding: 12px 16px;
     display: flex;
