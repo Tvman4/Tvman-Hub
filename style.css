@@ -15,6 +15,7 @@ body {
     align-items: center;
     overflow-x: hidden;
     position: relative;
+    padding: 40px 0;
 }
 
 /* Professional Loading Screen */
@@ -207,11 +208,11 @@ body {
 .container {
     width: 100%;
     max-width: 500px;
-    padding: 30px 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
     z-index: 10;
 }
 
@@ -288,12 +289,30 @@ body {
     font-size: 16px;
 }
 
+/* Discord Online / Offline Status Dot Colors */
 .discord-status-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #747f8d;
+    background-color: #747f8d; /* Default Offline */
     display: inline-block;
+}
+
+.discord-status-dot.online {
+    background-color: #43b581;
+    box-shadow: 0 0 8px #43b581;
+}
+
+.discord-status-dot.idle {
+    background-color: #faa61a;
+}
+
+.discord-status-dot.dnd {
+    background-color: #f04747;
+}
+
+.discord-status-dot.offline {
+    background-color: #747f8d;
 }
 
 .discord-activity-text {
@@ -456,7 +475,7 @@ body {
     color: #ffffff;
 }
 
-/* Update Log Modal Popup */
+/* Update Log & FAQ Modal Popup */
 .modal-overlay {
     position: fixed;
     top: 0;
