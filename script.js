@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const latestRun = runs[0];
                     if (latestRun.status === 'in_progress' || latestRun.status === 'queued') {
                         hubStatusElement.innerText = 'Hub: Updating';
-                        hubStatusElement.style.color = '#ff4d4d';
+                        hubStatusElement.style.color = '#ff6666';
                     } else {
                         hubStatusElement.innerText = 'Hub: Online';
                         hubStatusElement.style.color = '#00ff66';
