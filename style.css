@@ -634,6 +634,24 @@ body {
     gap: 10px;
 }
 
+.discord-embed-banner {
+    width: 100%;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.discord-embed-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .embed-title {
     font-size: 14px;
     font-weight: 600;
