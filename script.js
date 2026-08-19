@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (json.success && json.data) {
                 const data = json.data;
                 
-                // 1. Update Discord Username and Status Dot (Online/Offline/Idle/DND)
+                // 1. Update Discord Username and Status Dot
                 const discordUsernameEl = document.getElementById('discord-username');
                 const statusDotEl = document.getElementById('discord-status-dot');
                 const activityTextEl = document.getElementById('discord-activity');
