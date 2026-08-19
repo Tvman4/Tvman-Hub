@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tvman | Hub</title>
     
-    <!-- Explicit Absolute Favicon Links -->
+    <!-- Standard & Apple Specific Favicon Overrides -->
     <link rel="icon" type="image/x-icon" href="https://tvman4.github.io/Tvman-Hub/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="https://tvman4.github.io/Tvman-Hub/favicon.ico">
     <link rel="apple-touch-icon" href="https://tvman4.github.io/Tvman-Hub/favicon.ico">
+    <link rel="mask-icon" href="https://tvman4.github.io/Tvman-Hub/favicon.ico" color="#ff1a1a">
     
-    <!-- Discord Open Graph Embed Tags -->
+    <!-- Discord Open Graph Embed Tags (With v=2 Query Support) -->
     <meta property="og:title" content="Tvman Hub">
     <meta property="og:description" content="Check out my website for custom tools, mods, and live status updates!">
     <meta property="og:image" content="https://tvman4.github.io/Tvman-Hub/favicon.ico">
-    <meta property="og:url" content="https://tvman4.github.io/Tvman-Hub/">
+    <meta property="og:url" content="https://tvman4.github.io/Tvman-Hub/?v=2">
     <meta name="theme-color" content="#ff1a1a">
 
     <link rel="stylesheet" href="style.css">
@@ -58,16 +59,22 @@
         
         <!-- Profile Section -->
         <div class="profile-section">
+            <!-- Logo Above Profile Picture -->
+            <div class="site-logo-container">
+                <img src="logo.png" alt="Tvman Logo" class="site-logo">
+            </div>
+
             <div class="pfp-container interactive-hover">
                 <img src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Tvman PFP" class="pfp">
             </div>
             <h1 class="profile-name">Tvman</h1>
             
-            <!-- Discord Handle with Status Indicator -->
+            <!-- Discord Handle with Status Indicator & Custom Activity Status Text -->
             <div class="profile-handle">
                 <i class="fa-brands fa-discord"></i>
                 <span>@tvmangt</span>
                 <span class="discord-status-dot" title="Discord Status: Checking..."></span>
+                <span class="discord-activity-text">Working On TvMenu</span>
             </div>
 
             <div class="profile-email">
@@ -110,7 +117,7 @@
             <button class="tab-btn interactive-hover" data-link="discord">
                 <div class="btn-content">
                     <span class="btn-title">TvMenuPCVR</span>
-                    <span class="btn-desc">Not Tested, Join The Discord For More Info!</span>
+                    <span class="btn-desc">Not Tested And Coming Soon! Join The Discord For More Info!</span>
                 </div>
                 <span class="tag paid">Paid/Buy at discord</span>
             </button>
@@ -153,8 +160,8 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">August 2026</span>
-                    <h4>v4.6 - Absolute Favicon Fix</h4>
-                    <p>Forced absolute asset links for browser tab icon rendering.</p>
+                    <h4>v4.9 - Logo & Status Updates</h4>
+                    <p>Added custom logo above PFP, status text badge, and updated PCVR description.</p>
                 </div>
             </div>
         </div>
