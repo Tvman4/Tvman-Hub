@@ -29,35 +29,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Assign links dynamically via JavaScript based on button index or class/attributes
+    // Handle Link Redirects cleanly through script.js
     const tabButtons = document.querySelectorAll('.tabs-container .tab-btn');
-    
-    tabButtons.forEach((btn, index) => {
+    tabButtons.forEach((btn) => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            
+            const type = btn.getAttribute('data-link');
             let destination = '';
-            
-            // Map each button index to its specific link destination
-            switch(index) {
-                case 0: // Modded Apks
-                case 1: // Discord Community
-                case 3: // TvMenuPCVR
-                case 4: // Modded Gtag By Tvman
-                    destination = 'https://discord.gg/g7CW8USwn';
-                    break;
-                case 2: // TvMenu Lib
-                    destination = 'https://github.com/Tvman4/TvMenuLib/releases#release-TvMenuV2';
-                    break;
-                default:
-                    destination = 'https://discord.gg/g7CW8USwn';
+
+            if (type === 'lib') {
+                destination = 'https://github.com/Tvman4/TvMenuLib/releases#release-TvMenuV2';
+            } else {
+                destination = 'https://discord.gg/g7CW8USwn';
             }
-            
-            if (destination) {
-                window.open(destination, '_blank');
-            }
+
+            window.open(destination, '_blank');
         });
     });
+
+    // Simulated Live Online Users Tracker (Increments/decrements realistically)
+    const liveUsersEl = document.getElementById('live-users');
+    if (liveUsersEl) {
+        let currentUsers = Math.floor(Math.random() * 3) + 1;
+        liveUsersEl.innerText = currentUsers;
+        setInterval(() => {
+            const change = Math.random() > 0.5 ? 1 : -1;
+            currentUsers = Math.max(1, currentUsers + change);
+            liveUsersEl.innerText = currentUsers;
+        }, 10000);
+    }
 
     // Track GitHub Actions for Tvman4/Tvman-Hub
     async function checkRepoActions() {
@@ -89,4 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkRepoActions();
     setInterval(checkRepoActions, 30000);
+
+    // Spotify Widget Integration (Lanyard / Public API tracker placeholder)
+    async function updateSpotifyStatus() {
+        const songEl = document.getElementById('spotify-song');
+        const artistEl = document.getElementById('spotify-artist');
+        const albumArtEl = document.getElementById('spotify-album-art');
+        
+        // If you use Lanyard for Discord/Spotify, replace DISCORD_USER_ID with your numeric Discord ID
+        // For now, it defaults gracefully to inactive state if not configured
+    }
+    updateSpotifyStatus();
 });
