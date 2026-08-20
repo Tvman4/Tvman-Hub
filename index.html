@@ -53,17 +53,14 @@
         
         <!-- Profile Section -->
         <div class="profile-section">
-            <!-- Full Un-cropped Logo Above -->
             <div class="full-logo-container">
                 <img src="logo.png" alt="Tvman Hub Logo" class="full-logo-img">
             </div>
 
-            <!-- Profile Picture in a Circle -->
             <div class="pfp-container">
                 <img src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Profile Picture" class="pfp">
             </div>
 
-            <!-- Profile Name Set To Tvman -->
             <h1 class="profile-name">Tvman</h1>
 
             <div class="profile-handle pill-badge">
@@ -82,7 +79,10 @@
             <a href="#" class="tab-btn-pill" data-link="discord">
                 <div class="btn-left">
                     <i class="fa-solid fa-download icon-styled"></i>
-                    <span class="btn-title">Modded Apks</span>
+                    <div>
+                        <span class="btn-title">Modded Apks</span>
+                        <span class="btn-tag tag-discord">FREE GET BY DISCORD</span>
+                    </div>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
@@ -98,7 +98,10 @@
             <a href="#" class="tab-btn-pill" data-link="lib">
                 <div class="btn-left">
                     <i class="fa-solid fa-code icon-styled"></i>
-                    <span class="btn-title">TvMenu Lib</span>
+                    <div>
+                        <span class="btn-title">TvMenu Lib</span>
+                        <span class="btn-tag tag-free">FREE</span>
+                    </div>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
@@ -106,7 +109,10 @@
             <a href="#" class="tab-btn-pill" data-link="discord">
                 <div class="btn-left">
                     <i class="fa-solid fa-vr-cardboard icon-styled"></i>
-                    <span class="btn-title">TvMenuPCVR</span>
+                    <div>
+                        <span class="btn-title">TvMenuPCVR</span>
+                        <span class="btn-tag tag-paid">PAID/GET BY DISCORD</span>
+                    </div>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
@@ -114,7 +120,10 @@
             <a href="#" class="tab-btn-pill" data-link="discord">
                 <div class="btn-left">
                     <i class="fa-solid fa-gamepad icon-styled"></i>
-                    <span class="btn-title">Modded Gtag By Tvman</span>
+                    <div>
+                        <span class="btn-title">Modded Gtag By Tvman</span>
+                        <span class="btn-tag tag-paid">PAID/GET BY DISCORD</span>
+                    </div>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
@@ -126,12 +135,20 @@
             <iframe src="https://discord.com/widget?id=1538740748709658694&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         </div>
 
-        <!-- FAQ Section Button -->
+        <!-- FAQ and Credits Buttons -->
         <div class="tabs-container">
             <a href="#" class="tab-btn-pill faq-trigger" id="open-faq">
                 <div class="btn-left">
                     <i class="fa-solid fa-circle-question icon-styled" style="color: #ff3333;"></i>
                     <span class="btn-title">Frequently Asked Questions</span>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
+            </a>
+
+            <a href="#" class="tab-btn-pill" id="open-credits">
+                <div class="btn-left">
+                    <i class="fa-solid fa-heart icon-styled" style="color: #ff66b2;"></i>
+                    <span class="btn-title">Credits</span>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
@@ -162,9 +179,24 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">Recent</span>
-                    <h4>Loading Failsafe Update</h4>
-                    <p>Added a fallback timer so the screen loads reliably even if image requests stall.</p>
+                    <h4>Links & Tags Update</h4>
+                    <p>Updated links to Discord and GitHub, added badges, and included credits for StripesVr.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credits Modal -->
+    <div class="modal-overlay" id="credits-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-heart"></i> Credits</h2>
+                <button class="close-btn" id="close-credits">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center; padding: 20px 0;">
+                <p style="font-size: 16px; color: #ffcccc; line-height: 1.5;">
+                    Credits to <b>StripesVr</b> for making the first hub!
+                </p>
             </div>
         </div>
     </div>
