@@ -48,80 +48,68 @@
         </div>
     </div>
 
-    <!-- Main Container -->
-    <div class="container">
+    <!-- Main Central Card Container -->
+    <div class="container glass-card-layout">
         
         <!-- Profile Section -->
         <div class="profile-section">
-            <!-- 2x Larger Logo -->
-            <div class="site-logo-container">
+            <div class="site-logo-container glowing-logo">
                 <img src="logo.png" alt="Tvman Hub Logo" class="site-logo">
             </div>
 
-            <div class="pfp-container">
-                <img src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Profile Picture" class="pfp">
-            </div>
+            <h1 class="profile-name">Tvman Hub</h1>
 
-            <h1 class="profile-name">Tvman</h1>
-
-            <div class="profile-handle">
+            <div class="profile-handle pill-badge">
                 <i class="fa-brands fa-discord"></i>
                 <span id="discord-username">@tvmangt</span>
                 <span class="discord-status-dot" id="discord-status-dot"></span>
-                <span class="discord-activity-text" id="discord-activity">Loading status...</span>
             </div>
 
-            <div class="profile-email">
-                <a href="mailto:TvmanMods@proton.me">
-                    <i class="fa-solid fa-envelope"></i> TvmanMods@proton.me
-                </a>
-            </div>
-
-            <div class="bio-box">
+            <div class="bio-box-minimal">
                 Solo Quest Modder And Game Maker
             </div>
         </div>
 
         <!-- Navigation Tabs / Buttons -->
         <div class="tabs-container">
-            <a href="#" class="tab-btn" data-link="discord">
-                <div class="btn-content">
+            <a href="#" class="tab-btn-pill" data-link="discord">
+                <div class="btn-left">
+                    <i class="fa-solid fa-download icon-styled"></i>
                     <span class="btn-title">Modded Apks</span>
-                    <span class="btn-desc">Custom application modifications</span>
                 </div>
-                <span class="tag free long-tag">Free/Get By Discord</span>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
 
-            <a href="#" class="tab-btn" data-link="discord">
-                <div class="btn-content">
+            <a href="#" class="tab-btn-pill" data-link="discord">
+                <div class="btn-left">
+                    <i class="fa-brands fa-discord icon-styled"></i>
                     <span class="btn-title">Discord Community</span>
-                    <span class="btn-desc">Join our growing server</span>
                 </div>
-                <span class="tag free">Join Community</span>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
 
-            <a href="#" class="tab-btn" data-link="lib">
-                <div class="btn-content">
+            <a href="#" class="tab-btn-pill" data-link="lib">
+                <div class="btn-left">
+                    <i class="fa-solid fa-code icon-styled"></i>
                     <span class="btn-title">TvMenu Lib</span>
-                    <span class="btn-desc">Lib for modding gtag copys</span>
                 </div>
-                <span class="tag free">FREE</span>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
 
-            <a href="#" class="tab-btn" data-link="discord">
-                <div class="btn-content">
+            <a href="#" class="tab-btn-pill" data-link="discord">
+                <div class="btn-left">
+                    <i class="fa-solid fa-vr-cardboard icon-styled"></i>
                     <span class="btn-title">TvMenuPCVR</span>
-                    <span class="btn-desc">Not Tested And Coming Soon! Join The Discord For More Info!</span>
                 </div>
-                <span class="tag paid">Paid/Buy at discord</span>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
 
-            <a href="#" class="tab-btn" data-link="discord">
-                <div class="btn-content">
+            <a href="#" class="tab-btn-pill" data-link="discord">
+                <div class="btn-left">
+                    <i class="fa-solid fa-gamepad icon-styled"></i>
                     <span class="btn-title">Modded Gtag By Tvman</span>
-                    <span class="btn-desc">Quest Mods, Coming Soon! And Join Discord For More Info!</span>
                 </div>
-                <span class="tag paid">Get Info</span>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
         </div>
 
@@ -133,30 +121,25 @@
 
         <!-- FAQ Section Button -->
         <div class="tabs-container">
-            <a href="#" class="tab-btn faq-trigger" id="open-faq">
-                <div class="btn-content">
-                    <span class="btn-title"><i class="fa-solid fa-circle-question" style="color: #8B0000;"></i> Frequently Asked Questions</span>
-                    <span class="btn-desc">Answers formatted as a Discord Embed</span>
+            <a href="#" class="tab-btn-pill faq-trigger" id="open-faq">
+                <div class="btn-left">
+                    <i class="fa-solid fa-circle-question icon-styled" style="color: #ff3333;"></i>
+                    <span class="btn-title">Frequently Asked Questions</span>
                 </div>
-                <span class="tag free">FAQ</span>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
         </div>
 
-        <!-- Stats & Update Log Bar -->
-        <div class="stats-widget">
-            <div class="stat-item">
-                <i class="fa-solid fa-users"></i>
-                <span>Online: <span id="live-users" class="stat-value">1</span></span>
+        <!-- Stats & Update Log Footer Badge -->
+        <div class="footer-pills-row">
+            <div class="mini-pill" id="open-updates">
+                <i class="fa-solid fa-clock-rotate-left"></i> Updates
             </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-                <i class="fa-solid fa-server"></i>
-                <span id="hub-status" class="stat-value online-status">Hub: Online</span>
+            <div class="mini-pill">
+                <i class="fa-solid fa-users"></i> Online: <span id="live-users">1</span>
             </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item update-trigger" id="open-updates">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <span>Updates</span>
+            <div class="mini-pill online-status-pill">
+                <i class="fa-solid fa-server"></i> Hub: Online
             </div>
         </div>
 
@@ -172,14 +155,14 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">Recent</span>
-                    <h4>Discord Server Widget Connected</h4>
-                    <p>Updated widget iframe source ID and dimensions to load your live Discord community server.</p>
+                    <h4>Card UI Redesign</h4>
+                    <p>Redesigned layout to mirror the clean floating card structure with blood-red accents.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- FAQ Modal styled as a Discord Embed (With Actual FAQ Content) -->
+    <!-- FAQ Modal styled as a Discord Embed -->
     <div class="modal-overlay" id="faq-modal">
         <div class="modal-content discord-modal-wrapper">
             <div class="modal-header">
@@ -187,7 +170,6 @@
                 <button class="close-btn" id="close-faq">&times;</button>
             </div>
             <div class="modal-body discord-embed-container">
-                <!-- Discord Embed Box -->
                 <div class="discord-embed" style="border-left-color: #8B0000;">
                     <div class="discord-embed-header">
                         <span class="embed-bot-name">Tvman Support <span class="embed-bot-tag">FAQ</span></span>
