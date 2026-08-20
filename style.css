@@ -113,7 +113,7 @@ body {
     margin-bottom: 25px;
 }
 
-/* Full Logo Image (Not in a circle) */
+/* Full Logo Image */
 .full-logo-container {
     width: 100%;
     max-width: 200px;
@@ -215,6 +215,11 @@ body {
     gap: 12px;
 }
 
+.btn-left div {
+    display: flex;
+    flex-direction: column;
+}
+
 .icon-styled {
     font-size: 16px;
     color: #ff4d4d;
@@ -223,6 +228,26 @@ body {
 .btn-title {
     font-size: 15px;
     font-weight: 600;
+}
+
+/* Button Tags Styling */
+.btn-tag {
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+}
+
+.tag-free {
+    color: #4cd137;
+}
+
+.tag-discord {
+    color: #00b0f4;
+}
+
+.tag-paid {
+    color: #ffaa00;
 }
 
 .arrow-icon {
