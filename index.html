@@ -34,52 +34,16 @@
         <div class="grid-overlay"></div>
     </div>
 
-    <!-- Language Selector Dropdown at Top Right -->
-    <div class="lang-selector-container">
-        <i class="fa-solid fa-globe"></i>
-        <select id="language-select">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-            <option value="it">Italiano</option>
-            <option value="pt">Português</option>
-            <option value="ru">Русский</option>
-            <option value="ja">日本語</option>
-            <option value="ko">한국어</option>
-            <option value="zh">中文</option>
-            <option value="ar">العربية</option>
-            <option value="hi">हिन्दी</option>
-            <option value="tr">Türkçe</option>
-            <option value="nl">Nederlands</option>
-            <option value="pl">Polski</option>
-            <option value="vi">Tiếng Việt</option>
-            <option value="th">ไทย</option>
-            <option value="id">Bahasa Indonesia</option>
-            <option value="uk">Українська</option>
-            <option value="sv">Svenska</option>
-            <option value="no">Norsk</option>
-            <option value="da">Dansk</option>
-            <option value="fi">Suomi</option>
-            <option value="el">Ελληνικά</option>
-            <option value="cs">Čeština</option>
-            <option value="hu">Magyar</option>
-            <option value="ro">Română</option>
-            <option value="sk">Slovenčina</option>
-            <option value="bg">Български</option>
-            <option value="hr">Hrvatski</option>
-            <option value="sr">Српски</option>
-            <option value="ms">Bahasa Melayu</option>
-            <option value="tl">Tagalog</option>
-            <option value="fa">فارسی</option>
-            <option value="he">עברית</option>
-            <option value="bn">বাংলা</option>
-            <option value="ur">اردو</option>
-            <option value="mr">मराठी</option>
-            <option value="ta">தமிழ்</option>
-            <option value="te">తెలుగు</option>
-            <option value="sw">Kiswahili</option>
-        </select>
+    <!-- Floating Spotify Widget (Tracked by Lanyard API) -->
+    <div class="music-widget" style="display: none;">
+        <div class="music-thumb-container">
+            <img src="" alt="Album Art" class="music-thumb">
+            <div class="play-overlay"><i class="fab fa-spotify"></i></div>
+        </div>
+        <div class="music-info">
+            <span class="song-name">Not playing music</span>
+            <span class="artist-name">Spotify</span>
+        </div>
     </div>
 
     <!-- Main Central Card Container -->
@@ -101,6 +65,57 @@
                 <i class="fa-brands fa-discord"></i>
                 <span id="discord-username">@tvmangt</span>
                 <span class="discord-status-dot" id="discord-status-dot"></span>
+            </div>
+
+            <!-- Language Selector Dropdown (Placed under Discord Tag) -->
+            <div class="language-selector-box">
+                <div class="language-info">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>Language</span>
+                </div>
+                <select id="language-select" class="language-dropdown">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="pt">Português</option>
+                    <option value="ru">Русский</option>
+                    <option value="ja">日本語</option>
+                    <option value="ko">한국어</option>
+                    <option value="zh">中文</option>
+                    <option value="ar">العربية</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="tr">Türkçe</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="pl">Polski</option>
+                    <option value="vi">Tiếng Việt</option>
+                    <option value="th">ไทย</option>
+                    <option value="id">Bahasa Indonesia</option>
+                    <option value="uk">Українська</option>
+                    <option value="sv">Svenska</option>
+                    <option value="no">Norsk</option>
+                    <option value="da">Dansk</option>
+                    <option value="fi">Suomi</option>
+                    <option value="el">Ελληνικά</option>
+                    <option value="cs">Čeština</option>
+                    <option value="hu">Magyar</option>
+                    <option value="ro">Română</option>
+                    <option value="sk">Slovenčina</option>
+                    <option value="bg">Български</option>
+                    <option value="hr">Hrvatski</option>
+                    <option value="sr">Српски</option>
+                    <option value="ms">Bahasa Melayu</option>
+                    <option value="tl">Tagalog</option>
+                    <option value="fa">فارسی</option>
+                    <option value="he">עברית</option>
+                    <option value="bn">বাংলা</option>
+                    <option value="ur">اردو</option>
+                    <option value="mr">मराठी</option>
+                    <option value="ta">தமிழ்</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="sw">Kiswahili</option>
+                </select>
             </div>
 
             <div class="bio-box-minimal" data-i18n="bio">
@@ -203,7 +218,7 @@
 
     </div>
 
-    <!-- Update Log Modal -->
+    <!-- Modals -->
     <div class="modal-overlay" id="update-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -213,14 +228,13 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">Recent</span>
-                    <h4>40 Languages & FAQ Update</h4>
-                    <p>Added modular translate.js supporting 40 languages and updated FAQ library information.</p>
+                    <h4>Languages & Layout Update</h4>
+                    <p>Moved language selector inside the profile card and integrated Lanyard API status tracking.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Credits Modal -->
     <div class="modal-overlay" id="credits-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -235,7 +249,6 @@
         </div>
     </div>
 
-    <!-- FAQ Modal styled as a Discord Embed -->
     <div class="modal-overlay" id="faq-modal">
         <div class="modal-content discord-modal-wrapper">
             <div class="modal-header">
