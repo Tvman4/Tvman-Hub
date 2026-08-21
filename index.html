@@ -34,18 +34,52 @@
         <div class="grid-overlay"></div>
     </div>
 
-    <!-- Dynamic Spotify Widget -->
-    <div class="music-widget" id="spotify-widget">
-        <div class="music-thumb-container">
-            <img id="spotify-album-art" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=100&auto=format&fit=crop" alt="Album Art" class="music-thumb">
-            <div class="play-overlay">
-                <i class="fa-solid fa-music"></i>
-            </div>
-        </div>
-        <div class="music-info">
-            <span id="spotify-song" class="song-name">Not Listening</span>
-            <span id="spotify-artist" class="artist-name">Spotify Inactive</span>
-        </div>
+    <!-- Language Selector Dropdown at Top Right -->
+    <div class="lang-selector-container">
+        <i class="fa-solid fa-globe"></i>
+        <select id="language-select">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Português</option>
+            <option value="ru">Русский</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="zh">中文</option>
+            <option value="ar">العربية</option>
+            <option value="hi">हिन्दी</option>
+            <option value="tr">Türkçe</option>
+            <option value="nl">Nederlands</option>
+            <option value="pl">Polski</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="th">ไทย</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="uk">Українська</option>
+            <option value="sv">Svenska</option>
+            <option value="no">Norsk</option>
+            <option value="da">Dansk</option>
+            <option value="fi">Suomi</option>
+            <option value="el">Ελληνικά</option>
+            <option value="cs">Čeština</option>
+            <option value="hu">Magyar</option>
+            <option value="ro">Română</option>
+            <option value="sk">Slovenčina</option>
+            <option value="bg">Български</option>
+            <option value="hr">Hrvatski</option>
+            <option value="sr">Српски</option>
+            <option value="ms">Bahasa Melayu</option>
+            <option value="tl">Tagalog</option>
+            <option value="fa">فارسی</option>
+            <option value="he">עברית</option>
+            <option value="bn">বাংলা</option>
+            <option value="ur">اردو</option>
+            <option value="mr">मराठी</option>
+            <option value="ta">தமிழ்</option>
+            <option value="te">తెలుగు</option>
+            <option value="sw">Kiswahili</option>
+        </select>
     </div>
 
     <!-- Main Central Card Container -->
@@ -69,7 +103,7 @@
                 <span class="discord-status-dot" id="discord-status-dot"></span>
             </div>
 
-            <div class="bio-box-minimal">
+            <div class="bio-box-minimal" data-i18n="bio">
                 Solo Quest Modder And Game Maker
             </div>
         </div>
@@ -80,8 +114,8 @@
                 <div class="btn-left">
                     <i class="fa-solid fa-download icon-styled"></i>
                     <div>
-                        <span class="btn-title">Modded Apks</span>
-                        <span class="btn-tag tag-discord">FREE GET BY DISCORD</span>
+                        <span class="btn-title" data-i18n="moddedApks">Modded Apks</span>
+                        <span class="btn-tag tag-discord" data-i18n="tagDiscord">FREE GET BY DISCORD</span>
                     </div>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
@@ -90,7 +124,7 @@
             <a href="#" class="tab-btn-pill" data-link="discord">
                 <div class="btn-left">
                     <i class="fa-brands fa-discord icon-styled"></i>
-                    <span class="btn-title">Discord Community</span>
+                    <span class="btn-title" data-i18n="discordCommunity">Discord Community</span>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
@@ -99,8 +133,8 @@
                 <div class="btn-left">
                     <i class="fa-solid fa-code icon-styled"></i>
                     <div>
-                        <span class="btn-title">TvMenu Lib</span>
-                        <span class="btn-tag tag-free">FREE</span>
+                        <span class="btn-title" data-i18n="tvMenuLib">TvMenu Lib</span>
+                        <span class="btn-tag tag-free" data-i18n="tagFree">FREE</span>
                     </div>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
@@ -110,8 +144,8 @@
                 <div class="btn-left">
                     <i class="fa-solid fa-vr-cardboard icon-styled"></i>
                     <div>
-                        <span class="btn-title">TvMenuPCVR</span>
-                        <span class="btn-tag tag-paid">PAID/GET BY DISCORD</span>
+                        <span class="btn-title" data-i18n="tvMenuPCVR">TvMenuPCVR</span>
+                        <span class="btn-tag tag-paid" data-i18n="tagPaid">PAID/GET BY DISCORD</span>
                     </div>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
@@ -121,8 +155,8 @@
                 <div class="btn-left">
                     <i class="fa-solid fa-gamepad icon-styled"></i>
                     <div>
-                        <span class="btn-title">Modded Gtag By Tvman</span>
-                        <span class="btn-tag tag-paid">PAID/GET BY DISCORD</span>
+                        <span class="btn-title" data-i18n="moddedGtag">Modded Gtag By Tvman</span>
+                        <span class="btn-tag tag-paid" data-i18n="tagPaid">PAID/GET BY DISCORD</span>
                     </div>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
@@ -140,7 +174,7 @@
             <a href="#" class="tab-btn-pill faq-trigger" id="open-faq">
                 <div class="btn-left">
                     <i class="fa-solid fa-circle-question icon-styled" style="color: #ff3333;"></i>
-                    <span class="btn-title">Frequently Asked Questions</span>
+                    <span class="btn-title" data-i18n="faqTitle">Frequently Asked Questions</span>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
@@ -148,7 +182,7 @@
             <a href="#" class="tab-btn-pill" id="open-credits">
                 <div class="btn-left">
                     <i class="fa-solid fa-heart icon-styled" style="color: #ff66b2;"></i>
-                    <span class="btn-title">Credits</span>
+                    <span class="btn-title" data-i18n="creditsTitle">Credits</span>
                 </div>
                 <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </a>
@@ -157,13 +191,13 @@
         <!-- Stats & Update Log Footer Badge -->
         <div class="footer-pills-row">
             <div class="mini-pill" id="open-updates">
-                <i class="fa-solid fa-clock-rotate-left"></i> Updates
+                <i class="fa-solid fa-clock-rotate-left"></i> <span data-i18n="updates">Updates</span>
             </div>
             <div class="mini-pill">
-                <i class="fa-solid fa-users"></i> Online: <span id="live-users">1</span>
+                <i class="fa-solid fa-users"></i> <span data-i18n="online">Online</span>: <span id="live-users">1</span>
             </div>
-            <div class="mini-pill online-status-pill">
-                <i class="fa-solid fa-server"></i> Hub: Online
+            <div class="mini-pill online-status-pill" data-i18n="hubOnline">
+                Hub: Online
             </div>
         </div>
 
@@ -179,8 +213,8 @@
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">Recent</span>
-                    <h4>FAQ Correction</h4>
-                    <p>Updated the FAQ description for TvMenu Lib to correctly specify it is for modding Gtag copies and fan games.</p>
+                    <h4>40 Languages & FAQ Update</h4>
+                    <p>Added modular translate.js supporting 40 languages and updated FAQ library information.</p>
                 </div>
             </div>
         </div>
@@ -190,12 +224,12 @@
     <div class="modal-overlay" id="credits-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2><i class="fa-solid fa-heart"></i> Credits</h2>
+                <h2><i class="fa-solid fa-heart"></i> <span data-i18n="creditsTitle">Credits</span></h2>
                 <button class="close-btn" id="close-credits">&times;</button>
             </div>
             <div class="modal-body" style="text-align: center; padding: 20px 0;">
-                <p style="font-size: 16px; color: #ffcccc; line-height: 1.5;">
-                    Credits to <b>StripesVr</b> for making the first hub!
+                <p style="font-size: 16px; color: #ffcccc; line-height: 1.5;" data-i18n="creditsText">
+                    Credits to StripesVr for making the first hub!
                 </p>
             </div>
         </div>
@@ -205,7 +239,7 @@
     <div class="modal-overlay" id="faq-modal">
         <div class="modal-content discord-modal-wrapper">
             <div class="modal-header">
-                <h2><i class="fa-solid fa-circle-question"></i> Frequently Asked Questions</h2>
+                <h2><i class="fa-solid fa-circle-question"></i> <span data-i18n="faqTitle">Frequently Asked Questions</span></h2>
                 <button class="close-btn" id="close-faq">&times;</button>
             </div>
             <div class="modal-body discord-embed-container">
@@ -216,30 +250,30 @@
                     </div>
                     
                     <div class="discord-embed-card" style="border-left: 4px solid #8B0000;">
-                        <div class="embed-title">❓ Frequently Asked Questions</div>
-                        <div class="embed-description">
+                        <div class="embed-title">❓ <span data-i18n="faqTitle">Frequently Asked Questions</span></div>
+                        <div class="embed-description" data-i18n="faqDesc">
                             Got questions about mods, menus, or releases? Find quick answers to common questions below!
                         </div>
 
                         <div class="embed-fields-grid">
                             <div class="embed-field">
-                                <div class="embed-field-name">Q: How do I download/get the modded APKs?</div>
-                                <div class="embed-field-value">A: All free modded APKs and project files are distributed directly through our Discord community server. Join the Discord to access the download channels.</div>
+                                <div class="embed-field-name" data-i18n="q1Name">Q: How do I download/get the modded APKs?</div>
+                                <div class="embed-field-value" data-i18n="q1Val">A: All free modded APKs and project files are distributed directly through our Discord community server. Join the Discord to access the download channels.</div>
                             </div>
                             
                             <div class="embed-field" style="margin-top: 12px;">
-                                <div class="embed-field-name">Q: Is TvMenu Lib free to use?</div>
-                                <div class="embed-field-value">A: Yes! TvMenu Lib is completely free and intended for modding Gorilla Tag copies and fan games. Check the library tab for instructions.</div>
+                                <div class="embed-field-name" data-i18n="q2Name">Q: Is TvMenu Lib free to use?</div>
+                                <div class="embed-field-value" data-i18n="q2Val">A: Yes! TvMenu Lib is completely free and intended for modding Gorilla Tag copies and fan games. Check the library tab for instructions.</div>
                             </div>
 
                             <div class="embed-field" style="margin-top: 12px;">
-                                <div class="embed-field-name">Q: When is TvMenuPCVR releasing?</div>
-                                <div class="embed-field-value">A: TvMenuPCVR is currently untested and coming soon. Keep an eye on the Discord announcements channel for release dates and testing info!</div>
+                                <div class="embed-field-name" data-i18n="q3Name">Q: When is TvMenuPCVR releasing?</div>
+                                <div class="embed-field-value" data-i18n="q3Val">A: TvMenuPCVR is currently untested and coming soon. Keep an eye on the Discord announcements channel for release dates and testing info!</div>
                             </div>
 
                             <div class="embed-field" style="margin-top: 12px;">
-                                <div class="embed-field-name">Q: Who do I contact if I need support?</div>
-                                <div class="embed-field-value">A: You can reach out via email at <b>TvmanMods@proton.me</b> or open a support ticket inside our Discord server.</div>
+                                <div class="embed-field-name" data-i18n="q4Name">Q: Who do I contact if I need support?</div>
+                                <div class="embed-field-value" data-i18n="q4Val">A: You can reach out via email at TvmanMods@proton.me or open a support ticket inside our Discord server.</div>
                             </div>
                         </div>
 
@@ -252,6 +286,8 @@
         </div>
     </div>
 
+    <!-- Include translation engine before main script -->
+    <script src="translate.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
