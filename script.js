@@ -1,4 +1,3 @@
-// Function to remove loading screen safely
 function hideLoader() {
     const loader = document.getElementById('loading-screen');
     if (loader && loader.style.display !== 'none') {
@@ -7,13 +6,42 @@ function hideLoader() {
     }
 }
 
-// Trigger on full window load
 window.addEventListener('load', hideLoader);
-
-// Failsafe: Force hide loader after 1.5 seconds just in case an image takes too long or fails
 setTimeout(hideLoader, 1500);
 
-// Modal Logic for Updates, FAQ, and Credits
+// Language Switching Engine
+function changeLanguage(lang) {
+    if (!translations[lang]) return;
+    
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+
+    // Handle RTL orientation support for languages like Arabic, Persian, Hebrew, Urdu
+    if (['ar', 'fa', 'he', 'ur'].includes(lang)) {
+        document.documentElement.setAttribute('dir', 'rtl');
+    } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+    }
+
+    localStorage.setItem('selected_lang', lang);
+}
+
+const langSelect = document.getElementById('language-select');
+if (langSelect) {
+    const savedLang = localStorage.getItem('selected_lang') || 'en';
+    langSelect.value = savedLang;
+    changeLanguage(savedLang);
+
+    langSelect.addEventListener('change', (e) => {
+        changeLanguage(e.target.value);
+    });
+}
+
+// Modals Control Logic
 const updateModal = document.getElementById('update-modal');
 const openUpdates = document.getElementById('open-updates');
 const closeUpdates = document.getElementById('close-updates');
@@ -65,14 +93,13 @@ if (closeCredits && creditsModal) {
     });
 }
 
-// Close modals when clicking outside content area
 window.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal-overlay')) {
         e.target.classList.remove('active');
     }
 });
 
-// Tab button link handler
+// External link buttons router
 document.querySelectorAll('.tab-btn-pill[data-link]').forEach(btn => {
     btn.addEventListener('click', (e) => {
         const linkType = btn.getAttribute('data-link');
