@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 600);
     }
 
-    // --- 2. Lanyard Tracking (Spotify & Discord Presence) ---
+    // --- 2. Lanyard API Tracking (Discord Status, Activities & Spotify) ---
     const DISCORD_USER_ID = '1373549788628254821'; 
 
     const songNameEl = document.querySelector('.song-name');
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.success && data.data) {
                     const presence = data.data;
 
-                    // --- A. Online / Offline Status Dot Color ---
+                    // --- A. Discord Online / Offline Status Dot Color ---
                     const discordStatus = presence.discord_status; // 'online', 'idle', 'dnd', 'offline'
                     if (statusDot) {
                         switch (discordStatus) {
@@ -45,7 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
 
-                    // --- B. Spotify Tracking Widget ---
+                    // --- B. Custom Discord Status / Activity Tracking ---
+                    // You can display custom activities/status text if needed:
+                    // const activities = presence.activities;
+                    // const customStatus = activities.find(act => act.type === 4); // Custom status type
+
+                    // --- C. Spotify Tracking Widget ---
                     if (presence.spotify && presence.listening_to_spotify) {
                         const spotify = presence.spotify;
                         
@@ -68,7 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLanyardData();
     setInterval(updateLanyardData, 10000);
 
-    // --- 3. Modal Popup System Handlers ---
+    // --- 3. Language Selector Fix (Hooking up translate.js engine) ---
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect && typeof changeLanguage === 'function') {
+        languageSelect.addEventListener('change', (e) => {
+            changeLanguage(e.target.value);
+        });
+    }
+
+    // --- 4. Modal Popup System Handlers ---
     const setupModal = (triggerId, modalId, closeId) => {
         const trigger = document.getElementById(triggerId);
         const modal = document.getElementById(modalId);
@@ -96,20 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
     setupModal('open-credits', 'credits-modal', 'close-credits');
     setupModal('open-updates', 'update-modal', 'close-updates');
 
-    // --- 4. Dynamic Discord / Link Redirect Routing ---
-    const discordInviteUrl = "https://discord.gg/yourdiscordinvite"; // Change to your actual invite link if needed
+    // --- 5. Dynamic Link Redirect Routing ---
+    const discordInviteUrl = "https://discord.gg/yourdiscordinvite"; 
 
-    document.querySelectorAll('[data-link="discord"]').forEach(element => {
+    document.querySelectorAll('[data-link="discord"], [data-link="lib"]').forEach(element => {
         element.addEventListener('click', (e) => {
             e.preventDefault();
             window.open(discordInviteUrl, '_blank');
-        });
-    });
-
-    document.querySelectorAll('[data-link="lib"]').forEach(element => {
-        element.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.open(discordInviteUrl, '_blank'); // Or specific library link
         });
     });
 });
