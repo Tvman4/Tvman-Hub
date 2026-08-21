@@ -68,7 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLanyardData();
     setInterval(updateLanyardData, 10000);
 
-    // --- 3. Language Selector Translation Wiring ---
+    // --- 3. Discord Profile Redirect ---
+    const discordProfileLink = document.getElementById('discord-profile-link');
+    if (discordProfileLink) {
+        discordProfileLink.addEventListener('click', () => {
+            window.open('https://discord.com/users/1373549788628254821', '_blank');
+        });
+    }
+
+    // --- 4. Language Selector Translation Wiring ---
     const languageSelect = document.getElementById('language-select');
     if (languageSelect && typeof changeLanguage === 'function') {
         languageSelect.addEventListener('change', (e) => {
@@ -76,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 4. Modal Popups (FAQ, Credits, Updates) ---
+    // --- 5. Modal Popups (FAQ, Credits, Updates) ---
     const setupModal = (triggerId, modalId, closeId) => {
         const trigger = document.getElementById(triggerId);
         const modal = document.getElementById(modalId);
@@ -104,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupModal('open-credits', 'credits-modal', 'close-credits');
     setupModal('open-updates', 'update-modal', 'close-updates');
 
-    // --- 5. Link Routing (Discord & GitHub) ---
+    // --- 6. Link Routing (Discord & GitHub) ---
     const discordInviteUrl = "https://discord.gg/chG2a3uyRY";
     const tvMenuLibUrl = "https://github.com/Tvman4/TvMenuLib/releases/tag/TvMenuV2";
 
