@@ -1,114 +1,108 @@
-function hideLoader() {
-    const loader = document.getElementById('loading-screen');
-    if (loader && loader.style.display !== 'none') {
-        loader.style.opacity = '0';
-        setTimeout(() => loader.style.display = 'none', 500);
-    }
-}
-
-window.addEventListener('load', hideLoader);
-setTimeout(hideLoader, 1500);
-
-// Language Switching Engine
-function changeLanguage(lang) {
-    if (!translations[lang]) return;
-    
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-            element.textContent = translations[lang][key];
-        }
-    });
-
-    // Handle RTL orientation support for languages like Arabic, Persian, Hebrew, Urdu
-    if (['ar', 'fa', 'he', 'ur'].includes(lang)) {
-        document.documentElement.setAttribute('dir', 'rtl');
-    } else {
-        document.documentElement.setAttribute('dir', 'ltr');
+document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. Loading Screen Handler ---
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        setTimeout(() => {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }, 600);
     }
 
-    localStorage.setItem('selected_lang', lang);
-}
+    // --- 2. Lanyard Tracking (Spotify, Online Status, Activity) ---
+    const DISCORD_USER_ID = '1373549788628254821'; 
 
-const langSelect = document.getElementById('language-select');
-if (langSelect) {
-    const savedLang = localStorage.getItem('selected_lang') || 'en';
-    langSelect.value = savedLang;
-    changeLanguage(savedLang);
+    // DOM Elements
+    const songNameEl = document.querySelector('.song-name');
+    const artistNameEl = document.querySelector('.artist-name');
+    const albumArtEl = document.querySelector('.music-thumb');
+    const musicWidget = document.querySelector('.music-widget');
+    const statusDot = document.querySelector('.discord-status-dot');
+    const pillBadgeText = document.querySelector('.pill-badge span'); // Assumes text next to the dot is in a span
 
-    langSelect.addEventListener('change', (e) => {
-        changeLanguage(e.target.value);
-    });
-}
+    function updateLanyardData() {
+        fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.data) {
+                    const presence = data.data;
 
-// Modals Control Logic
-const updateModal = document.getElementById('update-modal');
-const openUpdates = document.getElementById('open-updates');
-const closeUpdates = document.getElementById('close-updates');
+                    // --- A. Online / Offline Status Tracking ---
+                    const discordStatus = presence.discord_status; // 'online', 'idle', 'dnd', 'offline'
+                    
+                    if (statusDot) {
+                        // Remove previous status color classes if any
+                        statusDot.classList.remove('status-online', 'status-idle', 'status-dnd', 'status-offline');
+                        
+                        // Set color based on status
+                        switch (discordStatus) {
+                            case 'online':
+                                statusDot.style.backgroundColor = '#23a55a'; // Green
+                                break;
+                            case 'idle':
+                                statusDot.style.backgroundColor = '#f0b232'; // Yellow
+                                break;
+                            case 'dnd':
+                                statusDot.style.backgroundColor = '#f23f43'; // Red
+                                break;
+                            default:
+                                statusDot.style.backgroundColor = '#80848e'; // Grey / Offline
+                                break;
+                        }
+                    }
 
-const faqModal = document.getElementById('faq-modal');
-const openFaq = document.getElementById('open-faq');
-const closeFaq = document.getElementById('close-faq');
+                    // --- B. Spotify Tracking ---
+                    if (presence.spotify && presence.listening_to_spotify) {
+                        const spotify = presence.spotify;
+                        
+                        if (songNameEl) songNameEl.textContent = spotify.song || 'Unknown Track';
+                        if (artistNameEl) artistNameEl.textContent = spotify.artist || 'Unknown Artist';
+                        
+                        if (albumArtEl && spotify.album_art_url) {
+                            albumArtEl.src = spotify.album_art_url;
+                        }
 
-const creditsModal = document.getElementById('credits-modal');
-const openCredits = document.getElementById('open-credits');
-const closeCredits = document.getElementById('close-credits');
-
-if (openUpdates && updateModal) {
-    openUpdates.addEventListener('click', (e) => {
-        e.preventDefault();
-        updateModal.classList.add('active');
-    });
-}
-
-if (closeUpdates && updateModal) {
-    closeUpdates.addEventListener('click', () => {
-        updateModal.classList.remove('active');
-    });
-}
-
-if (openFaq && faqModal) {
-    openFaq.addEventListener('click', (e) => {
-        e.preventDefault();
-        faqModal.classList.add('active');
-    });
-}
-
-if (closeFaq && faqModal) {
-    closeFaq.addEventListener('click', () => {
-        faqModal.classList.remove('active');
-    });
-}
-
-if (openCredits && creditsModal) {
-    openCredits.addEventListener('click', (e) => {
-        e.preventDefault();
-        creditsModal.classList.add('active');
-    });
-}
-
-if (closeCredits && creditsModal) {
-    closeCredits.addEventListener('click', () => {
-        creditsModal.classList.remove('active');
-    });
-}
-
-window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal-overlay')) {
-        e.target.classList.remove('active');
+                        if (musicWidget) musicWidget.style.display = 'flex';
+                    } else {
+                        // Hide widget or show fallback if not listening to music
+                        if (songNameEl) songNameEl.textContent = 'Not playing music';
+                        if (artistNameEl) artistNameEl.textContent = 'Spotify';
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching Lanyard data:', error);
+            });
     }
-});
 
-// External link buttons router
-document.querySelectorAll('.tab-btn-pill[data-link]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const linkType = btn.getAttribute('data-link');
-        if (linkType === 'discord') {
+    // Initial fetch and poll every 10 seconds to keep live status updated
+    updateLanyardData();
+    setInterval(updateLanyardData, 10000);
+
+    // --- 3. Modal Open/Close Logic ---
+    const modalTriggers = document.querySelectorAll('[data-modal-target]');
+    const closeModalBtns = document.querySelectorAll('.close-btn, .modal-overlay');
+
+    modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
             e.preventDefault();
-            window.open('https://discord.gg/chG2a3uyRY', '_blank');
-        } else if (linkType === 'lib') {
-            e.preventDefault();
-            window.open('https://github.com/Tvman4/TvMenuLib/releases/tag/TvMenuV2', '_blank');
-        }
+            const modalId = trigger.getAttribute('data-modal-target');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+            }
+        });
+    });
+
+    closeModalBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (e.target === btn || btn.classList.contains('close-btn')) {
+                const modal = btn.closest('.modal-overlay');
+                if (modal) {
+                    modal.classList.remove('active');
+                }
+            }
+        });
     });
 });
