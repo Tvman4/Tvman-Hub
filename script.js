@@ -112,11 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setupModal('open-credits', 'credits-modal', 'close-credits');
     setupModal('open-updates', 'update-modal', 'close-updates');
 
-    // --- 6. Link Routing (Discord & GitHub) ---
+    // --- 6. Link Routing (Discord & MediaFire Lib Flow) ---
     const discordInviteUrl = "https://discord.gg/chG2a3uyRY";
-    const tvMenuLibUrl = "https://github.com/Tvman4/TvMenuLib/releases/tag/TvMenuV2";
+    const mediafireLibUrl = "https://www.mediafire.com/file/s55mh4kz8zybxl1/libTvMenu.so/file";
 
-    // All standard buttons send to Discord
+    // All standard discord buttons send to Discord
     document.querySelectorAll('[data-link="discord"]').forEach(element => {
         element.addEventListener('click', (e) => {
             e.preventDefault();
@@ -124,11 +124,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // TvMenu Lib button sends to GitHub Releases
+    // TvMenu Lib button opens MediaFire link and triggers the custom modal popup
     document.querySelectorAll('[data-link="lib"]').forEach(element => {
         element.addEventListener('click', (e) => {
             e.preventDefault();
-            window.open(tvMenuLibUrl, '_blank');
+            
+            // 1. Open MediaFire file link
+            window.open(mediafireLibUrl, '_blank');
+
+            // 2. Open the custom modal
+            const libModal = document.getElementById('lib-modal');
+            if (libModal) {
+                libModal.classList.add('active');
+            }
         });
     });
+
+    // Handle close and button action inside the Lib modal
+    const closeLibModalBtn = document.getElementById('close-lib-modal');
+    const libModal = document.getElementById('lib-modal');
+    const libDiscordBtn = document.getElementById('lib-discord-btn');
+
+    if (closeLibModalBtn && libModal) {
+        closeLibModalBtn.addEventListener('click', () => {
+            libModal.classList.remove('active');
+        });
+        libModal.addEventListener('click', (e) => {
+            if (e.target === libModal) {
+                libModal.classList.remove('active');
+            }
+        });
+    }
+
+    if (libDiscordBtn) {
+        libDiscordBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open(discordInviteUrl, '_blank');
+        });
+    }
 });
