@@ -27,20 +27,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     const presence = data.data;
 
                     // --- A. Discord Online Status Dot Color ---
-                    const discordStatus = presence.discord_status; // 'online', 'idle', 'dnd', 'offline'
+                    const discordStatus = presence.discord_status;
                     if (statusDot) {
                         switch (discordStatus) {
                             case 'online':
-                                statusDot.style.backgroundColor = '#23a55a'; // Green
+                                statusDot.style.backgroundColor = '#23a55a';
                                 break;
                             case 'idle':
-                                statusDot.style.backgroundColor = '#f0b232'; // Yellow
+                                statusDot.style.backgroundColor = '#f0b232';
                                 break;
                             case 'dnd':
-                                statusDot.style.backgroundColor = '#f23f43'; // Red
+                                statusDot.style.backgroundColor = '#f23f43';
                                 break;
                             default:
-                                statusDot.style.backgroundColor = '#80848e'; // Grey (Offline)
+                                statusDot.style.backgroundColor = '#80848e';
                                 break;
                         }
                     }
