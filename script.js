@@ -183,10 +183,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Soft live-user display (local session only)
-    const liveUsers = document.getElementById('live-users');
-    if (liveUsers) {
-        const n = 2 + Math.floor(Math.random() * 7);
-        liveUsers.textContent = String(n);
+    // Live presence: public Worker URL ONLY.
+    // Discord webhook stays in Cloudflare Secrets as DISCORD_WEBHOOK. Never paste it here.
+    const STATS_URL = "https://tvwebhook.elijahpauley186.workers.dev";
+    const SESSION_KEY = "tvman-session";
+
+    function sessionId() {
+        let id = localStorage.getItem(SESSION_KEY);
+        if (!id) {
+            id = (crypto.randomUUID && crypto.randomUUID()) || String(Date.now()) + Math.random();
+            localStorage.setItem(SESSION_KEY, id);
+        }
+        return id;
     }
+
+    const liveUsers = document.getElementById("live-users");
+
+    async function ping() {
+        if (!STATS_URL || STATS_URL.indexOf("YOUR-SUBDOMAIN") !== -1) return;
+        try {
+            const res = await fetch(STATS_URL, {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({ id: sessionId() })
+            });
+            const data = await res.json();
+            if (liveUsers && data.online != null) liveUsers.textContent = data.online;
+        } catch (e) {}
+    }
+
+    ping();
+    setInterval(ping, 25000);
 });
+
