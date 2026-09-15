@@ -9,18 +9,19 @@
     <meta property="og:description" content="Welcome to Tvman Hub! Your all-in-one destination for Gorilla Tag and fan-game modding.">
     <meta property="og:image" content="logo.png">
     <meta property="og:url" content="https://tvman4.github.io/Tvman-Hub/">
-    <meta name="theme-color" content="#8B0000">
+    <meta name="theme-color" content="#7a0010">
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="loading-screen">
         <div class="loader-content">
-            <div class="loader-spinner"></div>
+            <img src="logo.png" alt="" class="loader-logo">
+            <div class="loader-bar"><span></span></div>
             <h2>Tvman Hub</h2>
             <p>Loading experience...</p>
         </div>
@@ -43,6 +44,7 @@
         <div class="glow-orb orb-2"></div>
         <div class="glow-orb orb-3"></div>
         <div class="grid-overlay"></div>
+        <div class="scanline"></div>
     </div>
 
     <div class="music-widget" style="display: none;">
@@ -56,22 +58,23 @@
         </div>
     </div>
 
-    <div class="container glass-card-layout">
-        <div class="profile-section">
-            <div class="full-logo-container">
+    <div class="shell">
+        <aside class="side-panel">
+            <div class="brand-row">
                 <img src="logo.png" alt="Tvman Hub Logo" class="full-logo-img">
             </div>
 
-            <div class="pfp-container">
-                <img src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Profile Picture" class="pfp">
-            </div>
-
-            <h1 class="profile-name">Tvman</h1>
-
-            <div class="profile-handle pill-badge" id="discord-profile-link" style="cursor: pointer;" role="button" tabindex="0">
-                <i class="fa-brands fa-discord"></i>
-                <span id="discord-username">@tvmangt</span>
-                <span class="discord-status-dot" id="discord-status-dot"></span>
+            <div class="profile-section">
+                <div class="pfp-container">
+                    <img src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Profile Picture" class="pfp">
+                </div>
+                <h1 class="profile-name">Tvman</h1>
+                <div class="profile-handle pill-badge" id="discord-profile-link" role="button" tabindex="0">
+                    <i class="fa-brands fa-discord"></i>
+                    <span id="discord-username">@tvmangt</span>
+                    <span class="discord-status-dot" id="discord-status-dot"></span>
+                </div>
+                <p class="bio-box-minimal" data-i18n="bio">Solo Quest Modder And Game Maker</p>
             </div>
 
             <div class="language-selector-box">
@@ -124,99 +127,106 @@
                 </select>
             </div>
 
-            <div class="bio-box-minimal" data-i18n="bio">
-                Solo Quest Modder And Game Maker
+            <div class="footer-pills-row">
+                <div class="mini-pill" id="open-updates">
+                    <i class="fa-solid fa-clock-rotate-left"></i> <span data-i18n="updates">Updates</span>
+                </div>
+                <div class="mini-pill">
+                    <i class="fa-solid fa-users"></i> <span data-i18n="online">Online</span>: <span id="live-users">1</span>
+                </div>
+                <div class="mini-pill online-status-pill" data-i18n="hubOnline">Hub: Online</div>
             </div>
-        </div>
+        </aside>
 
-        <div class="tabs-container">
-            <a href="#" class="tab-btn-pill" data-link="discord">
-                <div class="btn-left">
-                    <i class="fa-solid fa-download icon-styled"></i>
-                    <div>
-                        <span class="btn-title" data-i18n="moddedApks">Modded Apks</span>
-                        <span class="btn-tag tag-discord" data-i18n="tagDiscord">FREE GET BY DISCORD</span>
+        <main class="main-panel">
+            <header class="hero">
+                <p class="eyebrow">TVMAN COMMAND</p>
+                <h2>Mods, libs, and the server — one hub.</h2>
+                <p class="hero-copy">Free APKs and TvMenu Lib through Discord. Paid PCVR and Gtag builds live in the same room.</p>
+            </header>
+
+            <section class="tabs-container action-grid">
+                <a href="#" class="tab-btn-pill card-apk" data-link="discord">
+                    <div class="btn-left">
+                        <span class="icon-wrap"><i class="fa-solid fa-download icon-styled"></i></span>
+                        <div>
+                            <span class="btn-title" data-i18n="moddedApks">Modded Apks</span>
+                            <span class="btn-tag tag-discord" data-i18n="tagDiscord">FREE GET BY DISCORD</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                </a>
+
+                <a href="#" class="tab-btn-pill card-discord" data-link="discord">
+                    <div class="btn-left">
+                        <span class="icon-wrap"><i class="fa-brands fa-discord icon-styled"></i></span>
+                        <span class="btn-title" data-i18n="discordCommunity">Discord Community</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                </a>
+
+                <a href="#" class="tab-btn-pill card-lib" data-link="lib">
+                    <div class="btn-left">
+                        <span class="icon-wrap"><i class="fa-solid fa-code icon-styled"></i></span>
+                        <div>
+                            <span class="btn-title" data-i18n="tvMenuLib">TvMenu Lib</span>
+                            <span class="btn-tag tag-free" data-i18n="tagFree">FREE</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                </a>
+
+                <a href="#" class="tab-btn-pill card-pcvr" data-link="discord">
+                    <div class="btn-left">
+                        <span class="icon-wrap"><i class="fa-solid fa-vr-cardboard icon-styled"></i></span>
+                        <div>
+                            <span class="btn-title" data-i18n="tvMenuPCVR">TvMenuPCVR</span>
+                            <span class="btn-tag tag-paid" data-i18n="tagPaid">PAID/GET BY DISCORD</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                </a>
+
+                <a href="#" class="tab-btn-pill card-gtag" data-link="discord">
+                    <div class="btn-left">
+                        <span class="icon-wrap"><i class="fa-solid fa-gamepad icon-styled"></i></span>
+                        <div>
+                            <span class="btn-title" data-i18n="moddedGtag">Modded Gtag By Tvman</span>
+                            <span class="btn-tag tag-paid" data-i18n="tagPaid">PAID/GET BY DISCORD</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                </a>
+            </section>
+
+            <section class="lower-row">
+                <div class="discord-server-embed-box">
+                    <div class="embed-box-title"><i class="fa-brands fa-discord"></i> Live Discord Server Widget</div>
+                    <iframe title="Discord server widget" src="https://discord.com/widget?id=1538740748709658694&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                </div>
+
+                <div class="tabs-container support-col">
+                    <a href="#" class="tab-btn-pill" id="open-faq">
+                        <div class="btn-left">
+                            <span class="icon-wrap"><i class="fa-solid fa-circle-question icon-styled" style="color: #ff3333;"></i></span>
+                            <span class="btn-title" data-i18n="faqTitle">Frequently Asked Questions</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                    </a>
+                    <a href="#" class="tab-btn-pill" id="open-credits">
+                        <div class="btn-left">
+                            <span class="icon-wrap"><i class="fa-solid fa-heart icon-styled" style="color: #ff66b2;"></i></span>
+                            <span class="btn-title" data-i18n="creditsTitle">Credits</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                    </a>
+                    <div class="note-card">
+                        <p>Support: TvmanMods@proton.me</p>
+                        <p>Lib download opens MediaFire, then join Discord for setup.</p>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-right arrow-icon"></i>
-            </a>
-
-            <a href="#" class="tab-btn-pill" data-link="discord">
-                <div class="btn-left">
-                    <i class="fa-brands fa-discord icon-styled"></i>
-                    <span class="btn-title" data-i18n="discordCommunity">Discord Community</span>
-                </div>
-                <i class="fa-solid fa-arrow-right arrow-icon"></i>
-            </a>
-
-            <a href="#" class="tab-btn-pill" data-link="lib">
-                <div class="btn-left">
-                    <i class="fa-solid fa-code icon-styled"></i>
-                    <div>
-                        <span class="btn-title" data-i18n="tvMenuLib">TvMenu Lib</span>
-                        <span class="btn-tag tag-free" data-i18n="tagFree">FREE</span>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-right arrow-icon"></i>
-            </a>
-
-            <a href="#" class="tab-btn-pill" data-link="discord">
-                <div class="btn-left">
-                    <i class="fa-solid fa-vr-cardboard icon-styled"></i>
-                    <div>
-                        <span class="btn-title" data-i18n="tvMenuPCVR">TvMenuPCVR</span>
-                        <span class="btn-tag tag-paid" data-i18n="tagPaid">PAID/GET BY DISCORD</span>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-right arrow-icon"></i>
-            </a>
-
-            <a href="#" class="tab-btn-pill" data-link="discord">
-                <div class="btn-left">
-                    <i class="fa-solid fa-gamepad icon-styled"></i>
-                    <div>
-                        <span class="btn-title" data-i18n="moddedGtag">Modded Gtag By Tvman</span>
-                        <span class="btn-tag tag-paid" data-i18n="tagPaid">PAID/GET BY DISCORD</span>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-right arrow-icon"></i>
-            </a>
-        </div>
-
-        <div class="discord-server-embed-box">
-            <div class="embed-box-title"><i class="fa-brands fa-discord"></i> Live Discord Server Widget</div>
-            <iframe title="Discord server widget" src="https://discord.com/widget?id=1538740748709658694&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-        </div>
-
-        <div class="tabs-container">
-            <a href="#" class="tab-btn-pill" id="open-faq">
-                <div class="btn-left">
-                    <i class="fa-solid fa-circle-question icon-styled" style="color: #ff3333;"></i>
-                    <span class="btn-title" data-i18n="faqTitle">Frequently Asked Questions</span>
-                </div>
-                <i class="fa-solid fa-arrow-right arrow-icon"></i>
-            </a>
-
-            <a href="#" class="tab-btn-pill" id="open-credits">
-                <div class="btn-left">
-                    <i class="fa-solid fa-heart icon-styled" style="color: #ff66b2;"></i>
-                    <span class="btn-title" data-i18n="creditsTitle">Credits</span>
-                </div>
-                <i class="fa-solid fa-arrow-right arrow-icon"></i>
-            </a>
-        </div>
-
-        <div class="footer-pills-row">
-            <div class="mini-pill" id="open-updates">
-                <i class="fa-solid fa-clock-rotate-left"></i> <span data-i18n="updates">Updates</span>
-            </div>
-            <div class="mini-pill">
-                <i class="fa-solid fa-users"></i> <span data-i18n="online">Online</span>: <span id="live-users">1</span>
-            </div>
-            <div class="mini-pill online-status-pill" data-i18n="hubOnline">
-                Hub: Online
-            </div>
-        </div>
+            </section>
+        </main>
     </div>
 
     <div class="modal-overlay" id="update-modal">
@@ -232,9 +242,9 @@
                     <p>Clicking TvMenu Lib now downloads the file via MediaFire and displays a prompt modal to join the Discord server for setup.</p>
                 </div>
                 <div class="update-item">
-                    <span class="update-date">Hub Refresh</span>
-                    <h4>Visual polish + language persistence</h4>
-                    <p>Same links, same languages, same script.js routing — tighter layout, saved language choice, and smoother cards.</p>
+                    <span class="update-date">Full Rework</span>
+                    <h4>Command-center layout</h4>
+                    <p>Two-pane hub, new type, action cards, same links and languages.</p>
                 </div>
             </div>
         </div>
@@ -260,7 +270,7 @@
                 <button class="close-btn" id="close-lib-modal" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body" style="padding: 10px 20px 25px 20px;">
-                <i class="fa-solid fa-code" style="font-size: 40px; color: #8B0000; margin-bottom: 15px;"></i>
+                <i class="fa-solid fa-code" style="font-size: 40px; color: #ff2a2a; margin-bottom: 15px;"></i>
                 <h3 style="color: white; margin-bottom: 10px;">TvMenu Lib Downloaded!</h3>
                 <p style="color: #ccc; font-size: 14px; margin-bottom: 20px;">Your MediaFire download has started in a new tab. Join the community Discord server to view the setup instructions!</p>
                 <a href="#" id="lib-discord-btn" class="tab-btn-pill" style="background-color: #5865F2; justify-content: center; text-decoration: none;">
@@ -280,43 +290,35 @@
                 <button class="close-btn" id="close-faq" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body discord-embed-container">
-                <div class="discord-embed" style="border-left-color: #8B0000;">
+                <div class="discord-embed">
                     <div class="discord-embed-header">
                         <span class="embed-bot-name">Tvman Support <span class="embed-bot-tag">FAQ</span></span>
                         <span class="embed-timestamp">Help Desk</span>
                     </div>
-
                     <div class="discord-embed-card" style="border-left: 4px solid #8B0000;">
                         <div class="embed-title">❓ <span data-i18n="faqTitle">Frequently Asked Questions</span></div>
                         <div class="embed-description" data-i18n="faqDesc">
                             Got questions about mods, menus, or releases? Find quick answers to common questions below!
                         </div>
-
                         <div class="embed-fields-grid">
                             <div class="embed-field">
                                 <div class="embed-field-name" data-i18n="q1Name">Q: How do I download/get the modded APKs?</div>
                                 <div class="embed-field-value" data-i18n="q1Val">A: All free modded APKs and project files are distributed directly through our Discord community server. Join the Discord to access the download channels.</div>
                             </div>
-
                             <div class="embed-field" style="margin-top: 12px;">
                                 <div class="embed-field-name" data-i18n="q2Name">Q: Is TvMenu Lib free to use?</div>
                                 <div class="embed-field-value" data-i18n="q2Val">A: Yes! TvMenu Lib is completely free and intended for modding Gorilla Tag copies and fan games. Check the library tab for instructions.</div>
                             </div>
-
                             <div class="embed-field" style="margin-top: 12px;">
                                 <div class="embed-field-name" data-i18n="q3Name">Q: When is TvMenuPCVR releasing?</div>
                                 <div class="embed-field-value" data-i18n="q3Val">A: TvMenuPCVR is currently untested and coming soon. Keep an eye on the Discord announcements channel for release dates and testing info!</div>
                             </div>
-
                             <div class="embed-field" style="margin-top: 12px;">
                                 <div class="embed-field-name" data-i18n="q4Name">Q: Who do I contact if I need support?</div>
                                 <div class="embed-field-value" data-i18n="q4Val">A: You can reach out via email at TvmanMods@proton.me or open a support ticket inside our Discord server.</div>
                             </div>
                         </div>
-
-                        <div class="embed-footer">
-                            <span>Tvman Hub • Frequently Asked Questions</span>
-                        </div>
+                        <div class="embed-footer"><span>Tvman Hub • Frequently Asked Questions</span></div>
                     </div>
                 </div>
             </div>
