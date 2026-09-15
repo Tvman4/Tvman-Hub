@@ -310,47 +310,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const rain = document.getElementById("rain-canvas");
     if (rain) {
         const ctx = rain.getContext("2d");
+        let w = 0, h = 0;
+        const mobile = window.matchMedia("(max-width: 700px)").matches;
+        const n = mobile ? 90 : 180;
         const drops = [];
-        const count = window.matchMedia("(max-width: 700px)").matches ? 55 : 110;
         const resize = () => {
-            rain.width = innerWidth;
-            rain.height = innerHeight;
+            w = rain.width = innerWidth;
+            h = rain.height = innerHeight;
         };
         resize();
         addEventListener("resize", resize);
-        for (let i = 0; i < count; i++) {
+        for (let i = 0; i < n; i++) {
             drops.push({
                 x: Math.random() * innerWidth,
                 y: Math.random() * innerHeight,
-                len: 8 + Math.random() * 16,
-                spd: 7 + Math.random() * 10,
-                w: 0.6 + Math.random() * 0.8
+                len: 12 + Math.random() * 22,
+                spd: 14 + Math.random() * 18,
+                a: 0.12 + Math.random() * 0.28
             });
         }
         (function fall() {
-            ctx.clearRect(0, 0, rain.width, rain.height);
-            ctx.strokeStyle = "rgba(255,70,80,0.28)";
+            ctx.clearRect(0, 0, w, h);
             for (const d of drops) {
-                ctx.lineWidth = d.w;
+                ctx.strokeStyle = "rgba(210,225,255," + d.a + ")";
+                ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.moveTo(d.x, d.y);
-                ctx.lineTo(d.x - 1.2, d.y + d.len);
+                ctx.lineTo(d.x - 2.5, d.y + d.len);
                 ctx.stroke();
                 d.y += d.spd;
-                d.x -= 0.35;
-                if (d.y > rain.height) {
-                    d.y = -20;
-                    d.x = Math.random() * rain.width;
+                d.x -= 1.1;
+                if (d.y > h) {
+                    d.y = -d.len;
+                    d.x = Math.random() * w + 20;
                 }
             }
             requestAnimationFrame(fall);
         })();
         setInterval(() => {
-            if (Math.random() > 0.82) {
+            if (Math.random() > 0.88) {
                 document.body.classList.add("lightning");
-                setTimeout(() => document.body.classList.remove("lightning"), 90);
+                setTimeout(() => document.body.classList.remove("lightning"), 70);
             }
-        }, 4000);
+        }, 5000);
     }
 
 });

@@ -409,6 +409,12 @@ body.static-on .static-overlay { display: block !important; }
     z-index: 0;
     pointer-events: none;
 }
+.shell {
+    position: relative;
+    z-index: 2;
+}
+.music-widget { z-index: 80; }
+
 body.lightning {
     filter: brightness(1.35) saturate(1.15);
 }
