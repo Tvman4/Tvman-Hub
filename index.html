@@ -11,7 +11,7 @@
     <meta property="og:url" content="https://tvman4.github.io/Tvman-Hub/">
     <meta name="theme-color" content="#7a0010">
     <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=40">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +39,14 @@
         });
     </script>
 
+    <div id="surprise-overlay">
+        <div class="surprise-inner">
+            <p class="surprise-kicker" data-i18n="surpriseKicker">DROP</p>
+            <h2 data-i18n="surpriseTitle">HUB v4.0.0</h2>
+            <p data-i18n="surpriseBody">TvMenuLib 1.0.0 is live. PCVR is still in the lab.</p>
+            <button type="button" id="surprise-close" data-i18n="surpriseClose">Enter the hub</button>
+        </div>
+    </div>
     <div class="bg-animation">
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
@@ -47,6 +55,7 @@
         <div class="scanline"></div>
         <div class="static-overlay" id="static-overlay" hidden></div>
     </div>
+    <canvas id="rain-canvas" aria-hidden="true"></canvas>
     <canvas id="blood-trail" aria-hidden="true"></canvas>
 
     <div class="music-widget" style="display: none;">
@@ -71,7 +80,7 @@
                     <img src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Profile Picture" class="pfp">
                 </div>
                 <h1 class="profile-name">Tvman</h1>
-                <div class="version-chip" title="Hub build">HUB v3.1</div>
+                <div class="version-chip" title="Hub build" data-i18n="versionChip">HUB v4.0.0</div>
                 <p class="member-line"><i class="fa-brands fa-discord"></i> <span id="server-count">…</span> <span data-i18n="inServer">in server</span></p>
                 <button type="button" class="static-toggle" id="static-toggle" data-i18n="staticOverlay">Static overlay</button>
                 <div class="profile-handle pill-badge" id="discord-profile-link" role="button" tabindex="0">
@@ -157,6 +166,7 @@
                     <li><span>v3</span> <span data-i18n="patch1">Version chip, last-seen embed, live pulse</span></li>
                     <li><span>v3.1</span> <span data-i18n="patch2">Blood trail, boot log, D/L/S hotkeys</span></li>
                     <li><span>v3.1</span> <span data-i18n="patch3">Pinned patch notes, static overlay, server online</span></li>
+                    <li><span>v4.0.0</span> <span data-i18n="patch4">TvMenuLib 1.0.0, PCVR in-dev tag, rain, drop screen</span></li>
                 </ul>
             </section>
 
@@ -184,7 +194,7 @@
                     <div class="btn-left">
                         <span class="icon-wrap"><i class="fa-solid fa-code icon-styled"></i></span>
                         <div>
-                            <span class="btn-title" data-i18n="tvMenuLib">TvMenu Lib</span>
+                            <span class="btn-title" data-i18n="tvMenuLib">TvMenuLib (1.0.0)</span>
                             <span class="btn-tag tag-free" data-i18n="tagFree">FREE</span>
                         </div>
                     </div>
@@ -195,7 +205,7 @@
                     <div class="btn-left">
                         <span class="icon-wrap"><i class="fa-solid fa-vr-cardboard icon-styled"></i></span>
                         <div>
-                            <span class="btn-title" data-i18n="tvMenuPCVR">TvMenuPCVR</span>
+                            <span class="btn-title" data-i18n="tvMenuPCVR">TvMenuPCVR (in dev, join discord boi)</span>
                             <span class="btn-tag tag-paid" data-i18n="tagPaid">PAID/GET BY DISCORD</span>
                         </div>
                     </div>
@@ -340,7 +350,7 @@
         </div>
     </div>
 
-    <script src="translate.js"></script>
-    <script src="script.js"></script>
+    <script src="translate.js?v=40"></script>
+    <script src="script.js?v=40"></script>
 </body>
 </html>

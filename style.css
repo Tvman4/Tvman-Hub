@@ -402,3 +402,40 @@ body.static-on .static-overlay { display: block !important; }
     cursor: pointer;
 }
 .static-toggle.on { background: rgba(255,40,40,.35); }
+
+#rain-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+body.lightning {
+    filter: brightness(1.35) saturate(1.15);
+}
+
+#surprise-overlay {
+    position: fixed; inset: 0; z-index: 8000;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(4,0,1,.92);
+    backdrop-filter: blur(10px);
+}
+#surprise-overlay.hide { opacity: 0; pointer-events: none; transition: opacity .45s ease; }
+.surprise-inner { text-align: center; padding: 24px; }
+.surprise-kicker { letter-spacing: .4em; color: #ff6b6b; font-size: 12px; font-weight: 800; }
+.surprise-inner h2 {
+    font-family: Syne, sans-serif;
+    font-size: clamp(42px, 10vw, 84px);
+    line-height: .9;
+    margin: 10px 0 14px;
+    text-shadow: 0 0 40px rgba(255,0,0,.7);
+}
+.surprise-inner p { color: #ffc9c9; margin-bottom: 22px; }
+#surprise-close {
+    border: 1px solid rgba(255,80,80,.5);
+    background: rgba(180,0,20,.35);
+    color: #fff;
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-weight: 800;
+    cursor: pointer;
+}

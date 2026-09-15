@@ -293,4 +293,64 @@ document.addEventListener('DOMContentLoaded', () => {
         setStatic(!document.body.classList.contains("static-on"));
     });
 
+    const surprise = document.getElementById("surprise-overlay");
+    const surpriseClose = document.getElementById("surprise-close");
+    if (surprise) {
+        let seen = false;
+        try { seen = localStorage.getItem("tvman-v4") === "1"; } catch (e) {}
+        if (seen) surprise.classList.add("hide");
+        if (surpriseClose) {
+            surpriseClose.addEventListener("click", () => {
+                surprise.classList.add("hide");
+                try { localStorage.setItem("tvman-v4", "1"); } catch (e) {}
+            });
+        }
+    }
+
+    const rain = document.getElementById("rain-canvas");
+    if (rain) {
+        const ctx = rain.getContext("2d");
+        const drops = [];
+        const count = window.matchMedia("(max-width: 700px)").matches ? 55 : 110;
+        const resize = () => {
+            rain.width = innerWidth;
+            rain.height = innerHeight;
+        };
+        resize();
+        addEventListener("resize", resize);
+        for (let i = 0; i < count; i++) {
+            drops.push({
+                x: Math.random() * innerWidth,
+                y: Math.random() * innerHeight,
+                len: 8 + Math.random() * 16,
+                spd: 7 + Math.random() * 10,
+                w: 0.6 + Math.random() * 0.8
+            });
+        }
+        (function fall() {
+            ctx.clearRect(0, 0, rain.width, rain.height);
+            ctx.strokeStyle = "rgba(255,70,80,0.28)";
+            for (const d of drops) {
+                ctx.lineWidth = d.w;
+                ctx.beginPath();
+                ctx.moveTo(d.x, d.y);
+                ctx.lineTo(d.x - 1.2, d.y + d.len);
+                ctx.stroke();
+                d.y += d.spd;
+                d.x -= 0.35;
+                if (d.y > rain.height) {
+                    d.y = -20;
+                    d.x = Math.random() * rain.width;
+                }
+            }
+            requestAnimationFrame(fall);
+        })();
+        setInterval(() => {
+            if (Math.random() > 0.82) {
+                document.body.classList.add("lightning");
+                setTimeout(() => document.body.classList.remove("lightning"), 90);
+            }
+        }, 4000);
+    }
+
 });
