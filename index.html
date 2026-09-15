@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tvman | Hub</title>
-    
-    <!-- Discord Rich Link Embed Meta Tags -->
+    <meta name="description" content="Tvman Hub — Quest modding, TvMenu Lib, Discord community, and Gorilla Tag fan-game resources.">
     <meta property="og:title" content="Tvman Hub!">
-    <meta property="og:description" content="Welcome to Tvman Hub! 🩸 Your ultimate, all-in-one destination for Gorilla Tag and Gorilla Tag fan game modding! Dive into a massive community built for creators, modders, and players alike.">
-    <meta property="og:image" content="https://tvman4.github.io/Tvman-Hub/logo.png">
+    <meta property="og:description" content="Welcome to Tvman Hub! Your all-in-one destination for Gorilla Tag and fan-game modding.">
+    <meta property="og:image" content="logo.png">
     <meta property="og:url" content="https://tvman4.github.io/Tvman-Hub/">
     <meta name="theme-color" content="#8B0000">
-
+    <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- Professional Loading Screen -->
     <div id="loading-screen">
         <div class="loader-content">
             <div class="loader-spinner"></div>
@@ -27,29 +26,25 @@
         </div>
     </div>
 
-    <!-- FAIL-SAFE: Forces the loading screen to hide after 2 seconds even if other scripts error out -->
     <script>
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loadingScreen = document.getElementById('loading-screen');
                 if (loadingScreen && loadingScreen.style.display !== 'none') {
                     loadingScreen.style.opacity = '0';
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
+                    setTimeout(() => { loadingScreen.style.display = 'none'; }, 500);
                 }
             }, 2000);
         });
     </script>
 
-    <!-- Background Grid & Animation Orbs -->
     <div class="bg-animation">
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
         <div class="grid-overlay"></div>
     </div>
 
-    <!-- Floating Spotify Widget (Tracked by Lanyard API) -->
     <div class="music-widget" style="display: none;">
         <div class="music-thumb-container">
             <img src="" alt="Album Art" class="music-thumb">
@@ -61,10 +56,7 @@
         </div>
     </div>
 
-    <!-- Main Central Card Container -->
     <div class="container glass-card-layout">
-        
-        <!-- Profile Section -->
         <div class="profile-section">
             <div class="full-logo-container">
                 <img src="logo.png" alt="Tvman Hub Logo" class="full-logo-img">
@@ -76,19 +68,18 @@
 
             <h1 class="profile-name">Tvman</h1>
 
-            <div class="profile-handle pill-badge" id="discord-profile-link" style="cursor: pointer;">
+            <div class="profile-handle pill-badge" id="discord-profile-link" style="cursor: pointer;" role="button" tabindex="0">
                 <i class="fa-brands fa-discord"></i>
                 <span id="discord-username">@tvmangt</span>
                 <span class="discord-status-dot" id="discord-status-dot"></span>
             </div>
 
-            <!-- Language Selector Dropdown -->
             <div class="language-selector-box">
                 <div class="language-info">
                     <i class="fa-solid fa-globe"></i>
                     <span>Language</span>
                 </div>
-                <select id="language-select" class="language-dropdown">
+                <select id="language-select" class="language-dropdown" aria-label="Language">
                     <option value="en">English</option>
                     <option value="es">Español</option>
                     <option value="fr">Français</option>
@@ -138,7 +129,6 @@
             </div>
         </div>
 
-        <!-- Navigation Tabs / Buttons -->
         <div class="tabs-container">
             <a href="#" class="tab-btn-pill" data-link="discord">
                 <div class="btn-left">
@@ -193,13 +183,11 @@
             </a>
         </div>
 
-        <!-- Live Discord Server Widget Embed Box -->
         <div class="discord-server-embed-box">
             <div class="embed-box-title"><i class="fa-brands fa-discord"></i> Live Discord Server Widget</div>
-            <iframe src="https://discord.com/widget?id=1538740748709658694&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            <iframe title="Discord server widget" src="https://discord.com/widget?id=1538740748709658694&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         </div>
 
-        <!-- FAQ and Credits Buttons -->
         <div class="tabs-container">
             <a href="#" class="tab-btn-pill" id="open-faq">
                 <div class="btn-left">
@@ -218,7 +206,6 @@
             </a>
         </div>
 
-        <!-- Stats & Update Log Footer Badge -->
         <div class="footer-pills-row">
             <div class="mini-pill" id="open-updates">
                 <i class="fa-solid fa-clock-rotate-left"></i> <span data-i18n="updates">Updates</span>
@@ -230,21 +217,24 @@
                 Hub: Online
             </div>
         </div>
-
     </div>
 
-    <!-- Modals -->
     <div class="modal-overlay" id="update-modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2><i class="fa-solid fa-terminal"></i> Update History</h2>
-                <button class="close-btn" id="close-updates">&times;</button>
+                <button class="close-btn" id="close-updates" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="update-item">
                     <span class="update-date">Recent</span>
                     <h4>MediaFire & Discord Lib Flow Integration</h4>
                     <p>Clicking TvMenu Lib now downloads the file via MediaFire and displays a prompt modal to join the Discord server for setup.</p>
+                </div>
+                <div class="update-item">
+                    <span class="update-date">Hub Refresh</span>
+                    <h4>Visual polish + language persistence</h4>
+                    <p>Same links, same languages, same script.js routing — tighter layout, saved language choice, and smoother cards.</p>
                 </div>
             </div>
         </div>
@@ -254,7 +244,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2><i class="fa-solid fa-heart"></i> <span data-i18n="creditsTitle">Credits</span></h2>
-                <button class="close-btn" id="close-credits">&times;</button>
+                <button class="close-btn" id="close-credits" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body" style="text-align: center; padding: 20px 0;">
                 <p style="font-size: 16px; color: #ffcccc; line-height: 1.5;" data-i18n="creditsText">
@@ -264,11 +254,10 @@
         </div>
     </div>
 
-    <!-- TvMenu Lib Custom Action Modal -->
     <div class="modal-overlay" id="lib-modal">
         <div class="modal-content" style="text-align: center; max-width: 400px;">
             <div class="modal-header" style="justify-content: flex-end; border: none; padding-bottom: 0;">
-                <button class="close-btn" id="close-lib-modal">&times;</button>
+                <button class="close-btn" id="close-lib-modal" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body" style="padding: 10px 20px 25px 20px;">
                 <i class="fa-solid fa-code" style="font-size: 40px; color: #8B0000; margin-bottom: 15px;"></i>
@@ -288,7 +277,7 @@
         <div class="modal-content discord-modal-wrapper">
             <div class="modal-header">
                 <h2><i class="fa-solid fa-circle-question"></i> <span data-i18n="faqTitle">Frequently Asked Questions</span></h2>
-                <button class="close-btn" id="close-faq">&times;</button>
+                <button class="close-btn" id="close-faq" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body discord-embed-container">
                 <div class="discord-embed" style="border-left-color: #8B0000;">
@@ -296,7 +285,7 @@
                         <span class="embed-bot-name">Tvman Support <span class="embed-bot-tag">FAQ</span></span>
                         <span class="embed-timestamp">Help Desk</span>
                     </div>
-                    
+
                     <div class="discord-embed-card" style="border-left: 4px solid #8B0000;">
                         <div class="embed-title">❓ <span data-i18n="faqTitle">Frequently Asked Questions</span></div>
                         <div class="embed-description" data-i18n="faqDesc">
@@ -308,7 +297,7 @@
                                 <div class="embed-field-name" data-i18n="q1Name">Q: How do I download/get the modded APKs?</div>
                                 <div class="embed-field-value" data-i18n="q1Val">A: All free modded APKs and project files are distributed directly through our Discord community server. Join the Discord to access the download channels.</div>
                             </div>
-                            
+
                             <div class="embed-field" style="margin-top: 12px;">
                                 <div class="embed-field-name" data-i18n="q2Name">Q: Is TvMenu Lib free to use?</div>
                                 <div class="embed-field-value" data-i18n="q2Val">A: Yes! TvMenu Lib is completely free and intended for modding Gorilla Tag copies and fan games. Check the library tab for instructions.</div>
@@ -334,7 +323,6 @@
         </div>
     </div>
 
-    <!-- Scripts: translate.js MUST be loaded before script.js -->
     <script src="translate.js"></script>
     <script src="script.js"></script>
 </body>

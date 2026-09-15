@@ -3,42 +3,41 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 :root {
-    --blood-bg: #120305;
+    --blood-bg: #0b0204;
     --blood-deep: #1a0408;
     --blood-card: rgba(72, 6, 12, 0.88);
     --blood-panel: rgba(90, 8, 16, 0.55);
-    --blood-border: rgba(255, 28, 28, 0.72);
-    --blood-glow: rgba(220, 0, 18, 0.55);
+    --blood-border: rgba(255, 48, 48, 0.62);
+    --blood-glow: rgba(220, 0, 18, 0.48);
     --blood-hot: #ff1a1a;
     --blood-soft: #ffb3b3;
     --blood-text: #ffd6d6;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
     background-color: var(--blood-bg);
     background-image:
-        radial-gradient(ellipse at 20% 0%, rgba(160, 0, 20, 0.35) 0%, transparent 45%),
-        radial-gradient(ellipse at 90% 100%, rgba(120, 0, 10, 0.4) 0%, transparent 50%);
+        radial-gradient(ellipse at 18% 0%, rgba(170, 0, 24, 0.38) 0%, transparent 46%),
+        radial-gradient(ellipse at 92% 100%, rgba(110, 0, 12, 0.42) 0%, transparent 52%);
     color: #ffffff;
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     overflow-x: hidden;
     position: relative;
+    padding: 28px 0 48px;
 }
 
-/* --- Professional Loading Screen --- */
 #loading-screen {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-color: var(--blood-bg);
     display: flex;
     justify-content: center;
@@ -47,44 +46,36 @@ body {
     transition: opacity 0.5s ease;
 }
 
-.loader-content {
-    text-align: center;
-}
+.loader-content { text-align: center; }
 
 .loader-spinner {
-    width: 50px;
-    height: 50px;
-    border: 4px solid rgba(139, 0, 0, 0.3);
+    width: 52px;
+    height: 52px;
+    border: 4px solid rgba(139, 0, 0, 0.28);
     border-top: 4px solid var(--blood-hot);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 15px auto;
+    animation: spin 0.9s linear infinite;
+    margin: 0 auto 16px auto;
 }
 
 .loader-content h2 {
     color: #ffffff;
-    font-size: 22px;
-    margin-bottom: 5px;
+    font-size: 24px;
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
     text-shadow: 0 0 18px rgba(255, 0, 0, 0.7);
 }
 
-.loader-content p {
-    color: var(--blood-soft);
-    font-size: 14px;
-}
+.loader-content p { color: var(--blood-soft); font-size: 14px; }
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-/* --- Background Animation Orbs & Grid --- */
 .bg-animation {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     pointer-events: none;
     z-index: -1;
     overflow: hidden;
@@ -95,48 +86,43 @@ body {
     width: 560px;
     height: 560px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(200, 0, 20, 0.55) 0%, rgba(18, 3, 5, 0) 70%);
+    background: radial-gradient(circle, rgba(200, 0, 20, 0.5) 0%, rgba(18, 3, 5, 0) 70%);
     filter: blur(80px);
 }
 
-.orb-1 {
-    top: -100px;
-    left: -100px;
-    animation: floatOrb 10s ease-in-out infinite alternate;
-}
-
-.orb-2 {
-    bottom: -100px;
-    right: -100px;
-    animation: floatOrb 12s ease-in-out infinite alternate-reverse;
+.orb-1 { top: -120px; left: -120px; animation: floatOrb 12s ease-in-out infinite alternate; }
+.orb-2 { bottom: -140px; right: -100px; animation: floatOrb 14s ease-in-out infinite alternate-reverse; }
+.orb-3 {
+    width: 320px; height: 320px;
+    top: 40%; left: 55%;
+    background: radial-gradient(circle, rgba(255, 40, 40, 0.22) 0%, transparent 70%);
+    animation: floatOrb 16s ease-in-out infinite alternate;
 }
 
 @keyframes floatOrb {
     0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(60px, 60px) scale(1.08); }
+    100% { transform: translate(50px, 40px) scale(1.08); }
 }
 
 .grid-overlay {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-image:
-        linear-gradient(rgba(180, 0, 0, 0.14) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(180, 0, 0, 0.14) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 30%, transparent 90%);
+        linear-gradient(rgba(180, 0, 0, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180, 0, 0, 0.12) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 28%, transparent 88%);
 }
 
-/* --- Floating Spotify / Music Widget --- */
 .music-widget {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    background: rgba(45, 6, 10, 0.92);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(220, 0, 0, 0.55);
-    padding: 10px 15px;
-    border-radius: 12px;
+    top: 18px;
+    left: 18px;
+    background: rgba(30, 4, 8, 0.92);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(220, 0, 0, 0.5);
+    padding: 10px 14px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -158,18 +144,11 @@ body {
     overflow: hidden;
 }
 
-.music-thumb {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+.music-thumb { width: 100%; height: 100%; object-fit: cover; }
 
 .play-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
@@ -178,52 +157,38 @@ body {
     font-size: 18px;
 }
 
-.music-info {
-    display: flex;
-    flex-direction: column;
-}
+.music-info { display: flex; flex-direction: column; }
 
-.song-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: #ffffff;
+.song-name, .artist-name {
     max-width: 160px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.artist-name {
-    font-size: 11px;
-    color: var(--blood-soft);
-    max-width: 160px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+.song-name { font-size: 13px; font-weight: 600; color: #ffffff; }
+.artist-name { font-size: 11px; color: var(--blood-soft); }
 
-/* --- Central Card Layout --- */
 .container.glass-card-layout {
     width: 100%;
-    max-width: 460px;
+    max-width: 480px;
     background:
-        linear-gradient(180deg, rgba(90, 8, 16, 0.92) 0%, rgba(40, 4, 8, 0.92) 100%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+        linear-gradient(180deg, rgba(86, 8, 16, 0.94) 0%, rgba(28, 3, 7, 0.94) 100%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border: 1.5px solid var(--blood-border);
-    border-radius: 24px;
-    padding: 30px 20px;
+    border-radius: 26px;
+    padding: 32px 22px 24px;
     box-shadow:
-        0 0 0 1px rgba(255, 40, 40, 0.12),
-        0 16px 50px var(--blood-glow),
-        0 0 80px rgba(160, 0, 10, 0.35);
-    margin: 20px;
+        0 0 0 1px rgba(255, 40, 40, 0.1),
+        0 18px 54px var(--blood-glow),
+        0 0 80px rgba(160, 0, 10, 0.28);
+    margin: 12px 16px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 }
 
-/* --- Profile Section --- */
 .profile-section {
     display: flex;
     flex-direction: column;
@@ -231,26 +196,24 @@ body {
     text-align: center;
 }
 
-.full-logo-container {
-    margin-bottom: 15px;
-}
+.full-logo-container { margin-bottom: 12px; }
 
 .full-logo-img {
-    max-width: 140px;
+    max-width: 148px;
     height: auto;
-    filter: drop-shadow(0 0 10px rgba(255, 20, 20, 0.45));
+    filter: drop-shadow(0 0 12px rgba(255, 20, 20, 0.45));
 }
 
 .pfp-container {
-    width: 90px;
-    height: 90px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     border: 2px solid var(--blood-hot);
     overflow: hidden;
     margin-bottom: 12px;
     box-shadow:
         0 0 0 3px rgba(80, 0, 8, 0.8),
-        0 0 28px rgba(255, 0, 0, 0.85);
+        0 0 28px rgba(255, 0, 0, 0.8);
     animation: pulseRing 2.8s ease-in-out infinite;
 }
 
@@ -259,17 +222,13 @@ body {
     50% { box-shadow: 0 0 0 3px rgba(80, 0, 8, 0.8), 0 0 38px rgba(255, 30, 30, 1); }
 }
 
-.pfp {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+.pfp { width: 100%; height: 100%; object-fit: cover; }
 
 .profile-name {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: #ffffff;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
     text-shadow: 0 0 14px rgba(255, 0, 0, 0.75);
 }
 
@@ -284,31 +243,29 @@ body {
     gap: 8px;
     color: var(--blood-text);
     margin-bottom: 12px;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s;
 }
 
-.pill-badge:hover {
-    background: rgba(220, 0, 0, 0.5);
-}
+.pill-badge:hover { background: rgba(220, 0, 0, 0.5); transform: translateY(-1px); }
 
 .discord-status-dot {
     width: 9px;
     height: 9px;
     border-radius: 50%;
     background-color: #80848e;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.35);
 }
 
-/* Language Selector */
 .language-selector-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: rgba(180, 0, 0, 0.22);
     border: 1px solid rgba(220, 0, 0, 0.45);
-    padding: 6px 12px;
+    padding: 7px 12px;
     border-radius: 12px;
     width: 100%;
-    max-width: 240px;
+    max-width: 268px;
     margin-bottom: 12px;
 }
 
@@ -327,61 +284,42 @@ body {
     font-size: 13px;
     outline: none;
     cursor: pointer;
+    max-width: 150px;
 }
 
-.language-dropdown option {
-    background: #250508;
-    color: #ffffff;
-}
+.language-dropdown option { background: #250508; color: #ffffff; }
 
 .bio-box-minimal {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--blood-text);
+    opacity: 0.95;
 }
 
-/* --- Tabs / Navigation Buttons --- */
-.tabs-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+.tabs-container { display: flex; flex-direction: column; gap: 10px; }
 
 .tab-btn-pill {
-    background: rgba(160, 0, 0, 0.28);
-    border: 1.5px solid rgba(220, 0, 0, 0.5);
+    background: rgba(160, 0, 0, 0.26);
+    border: 1.5px solid rgba(220, 0, 0, 0.46);
     border-radius: 14px;
-    padding: 12px 16px;
+    padding: 13px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
     color: #ffffff;
-    transition: all 0.25s ease;
+    transition: all 0.22s ease;
 }
 
 .tab-btn-pill:hover {
-    background: rgba(230, 0, 20, 0.42);
+    background: rgba(230, 0, 20, 0.4);
     border-color: rgba(255, 50, 50, 0.9);
     transform: translateY(-2px);
-    box-shadow: 0 4px 25px rgba(255, 0, 0, 0.45);
+    box-shadow: 0 6px 24px rgba(255, 0, 0, 0.38);
 }
 
-.btn-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.icon-styled {
-    font-size: 18px;
-    color: #ff4d4d;
-}
-
-.btn-title {
-    font-size: 14px;
-    font-weight: 600;
-    display: block;
-}
+.btn-left { display: flex; align-items: center; gap: 14px; }
+.icon-styled { font-size: 18px; color: #ff4d4d; width: 20px; text-align: center; }
+.btn-title { font-size: 14px; font-weight: 650; display: block; }
 
 .btn-tag {
     font-size: 10px;
@@ -390,27 +328,20 @@ body {
     border-radius: 4px;
     display: inline-block;
     margin-top: 3px;
+    letter-spacing: 0.02em;
 }
 
 .tag-discord { background: #5865F2; color: #ffffff; }
 .tag-free { background: #23a55a; color: #ffffff; }
 .tag-paid { background: #f0b232; color: #000000; }
 
-.arrow-icon {
-    font-size: 12px;
-    color: #ff9999;
-    transition: transform 0.2s, color 0.2s;
-}
+.arrow-icon { font-size: 12px; color: #ff9999; transition: transform 0.2s, color 0.2s; }
+.tab-btn-pill:hover .arrow-icon { transform: translateX(3px); color: #ffffff; }
+html[dir="rtl"] .tab-btn-pill:hover .arrow-icon { transform: translateX(-3px); }
 
-.tab-btn-pill:hover .arrow-icon {
-    transform: translateX(3px);
-    color: #ffffff;
-}
-
-/* --- Discord Server Embed Box --- */
 .discord-server-embed-box {
-    background: rgba(25, 5, 8, 0.92);
-    border: 1.5px solid rgba(200, 0, 0, 0.45);
+    background: rgba(18, 4, 7, 0.92);
+    border: 1.5px solid rgba(200, 0, 0, 0.42);
     border-radius: 16px;
     padding: 12px;
     display: flex;
@@ -421,7 +352,7 @@ body {
 .embed-box-title {
     font-size: 13px;
     font-weight: 600;
-    color: #5865F2;
+    color: #8ea1ff;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -431,19 +362,15 @@ body {
 .discord-server-embed-box iframe {
     border-radius: 12px;
     max-width: 100%;
+    width: 100%;
 }
 
-/* --- Footer Pills Row --- */
-.footer-pills-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-}
+.footer-pills-row { display: flex; justify-content: space-between; gap: 8px; }
 
 .mini-pill {
     background: rgba(160, 0, 0, 0.28);
     border: 1px solid rgba(200, 0, 0, 0.45);
-    padding: 8px 12px;
+    padding: 8px 10px;
     border-radius: 10px;
     font-size: 12px;
     color: var(--blood-text);
@@ -453,24 +380,13 @@ body {
     transition: background 0.2s, color 0.2s;
 }
 
-.mini-pill:hover {
-    background: rgba(220, 0, 0, 0.48);
-    color: #ffffff;
-}
+.mini-pill:hover { background: rgba(220, 0, 0, 0.48); color: #ffffff; }
+.online-status-pill { color: #23a55a; font-weight: 600; }
 
-.online-status-pill {
-    color: #23a55a;
-    font-weight: 600;
-}
-
-/* --- Modals Overlays --- */
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 2, 4, 0.88);
+    inset: 0;
+    background: rgba(10, 1, 3, 0.88);
     backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
@@ -479,28 +395,24 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+    padding: 16px;
 }
 
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
 
 .modal-content {
-    background: #25080c;
+    background: #1d070b;
     border: 1.5px solid rgba(220, 0, 0, 0.55);
     border-radius: 20px;
     width: 90%;
     max-width: 480px;
     padding: 24px;
-    box-shadow: 0 20px 60px rgba(200, 0, 0, 0.65);
+    box-shadow: 0 20px 60px rgba(200, 0, 0, 0.55);
     transform: translateY(20px);
     transition: transform 0.3s ease;
 }
 
-.modal-overlay.active .modal-content {
-    transform: translateY(0);
-}
+.modal-overlay.active .modal-content { transform: translateY(0); }
 
 .modal-header {
     display: flex;
@@ -516,7 +428,6 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #ffffff;
 }
 
 .close-btn {
@@ -525,63 +436,48 @@ body {
     color: var(--blood-soft);
     font-size: 22px;
     cursor: pointer;
-    transition: color 0.2s;
 }
 
-.close-btn:hover {
-    color: #ffffff;
+.close-btn:hover { color: #ffffff; }
+
+.modal-body { max-height: 60vh; overflow-y: auto; }
+
+.update-item {
+    background: rgba(255, 20, 20, 0.08);
+    border: 1px solid rgba(255, 40, 40, 0.18);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
 }
 
-.modal-body {
-    max-height: 60vh;
-    overflow-y: auto;
+.update-date {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ff8080;
 }
 
-/* FAQ Discord Style Embed formatting */
-.discord-embed-card,
-.discord-embed {
+.update-item h4 { margin: 4px 0 6px; font-size: 15px; }
+.update-item p { font-size: 13px; color: #e8cfcf; line-height: 1.45; }
+
+.discord-embed-card, .discord-embed {
     background: #2b2d31;
     border-radius: 8px;
     padding: 16px;
     color: #dbdee1;
 }
 
-.embed-title {
-    font-weight: 600;
-    font-size: 15px;
-    margin-bottom: 8px;
-    color: #ffffff;
-}
+.embed-title { font-weight: 600; font-size: 15px; margin-bottom: 8px; color: #ffffff; }
+.embed-description { font-size: 13px; color: #949ba4; margin-bottom: 14px; }
+.embed-field-name { font-weight: 600; font-size: 13px; color: #ffffff; margin-bottom: 4px; }
+.embed-field-value { font-size: 12px; color: #b5bac1; line-height: 1.45; }
 
-.embed-description {
-    font-size: 13px;
-    color: #949ba4;
-    margin-bottom: 14px;
-}
-
-.embed-field-name {
-    font-weight: 600;
-    font-size: 13px;
-    color: #ffffff;
-    margin-bottom: 4px;
-}
-
-.embed-field-value {
+.discord-embed-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
     font-size: 12px;
-    color: #949ba4;
-}
-
-.embed-footer {
-    font-size: 11px;
-    color: #949ba4;
-    margin-top: 14px;
-    border-top: 1px solid #3f4147;
-    padding-top: 8px;
-}
-
-.embed-bot-name {
-    font-weight: 600;
-    color: #ffffff;
+    color: #b5bac1;
 }
 
 .embed-bot-tag {
@@ -593,7 +489,11 @@ body {
     margin-left: 6px;
 }
 
-.embed-timestamp {
-    font-size: 11px;
-    color: #949ba4;
+.embed-footer { margin-top: 14px; font-size: 11px; color: #80848e; }
+
+@media (max-width: 520px) {
+    .music-widget { left: 10px; right: 10px; top: 10px; max-width: calc(100% - 20px); }
+    body { padding-top: 78px; }
+    .container.glass-card-layout { margin: 8px 10px; padding: 24px 14px 18px; }
+    .footer-pills-row { flex-wrap: wrap; }
 }
