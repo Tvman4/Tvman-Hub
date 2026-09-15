@@ -23,7 +23,7 @@
             <img src="logo.png" alt="" class="loader-logo">
             <div class="loader-bar"><span></span></div>
             <h2>Tvman Hub</h2>
-            <p>Loading experience...</p>
+            <pre class="boot-log" id="boot-log"></pre>
         </div>
     </div>
 
@@ -45,7 +45,9 @@
         <div class="glow-orb orb-3"></div>
         <div class="grid-overlay"></div>
         <div class="scanline"></div>
+        <div class="static-overlay" id="static-overlay" hidden></div>
     </div>
+    <canvas id="blood-trail" aria-hidden="true"></canvas>
 
     <div class="music-widget" style="display: none;">
         <div class="music-thumb-container">
@@ -69,6 +71,9 @@
                     <img src="CDEE8C6A-3BF4-47AE-9D9D-9912377216A7.webp" alt="Profile Picture" class="pfp">
                 </div>
                 <h1 class="profile-name">Tvman</h1>
+                <div class="version-chip" title="Hub build">HUB v3.1</div>
+                <p class="member-line"><i class="fa-brands fa-discord"></i> <span id="server-count">…</span> in server</p>
+                <button type="button" class="static-toggle" id="static-toggle">Static overlay</button>
                 <div class="profile-handle pill-badge" id="discord-profile-link" role="button" tabindex="0">
                     <i class="fa-brands fa-discord"></i>
                     <span id="discord-username">@tvmangt</span>
@@ -143,7 +148,17 @@
                 <p class="eyebrow">TVMAN COMMAND</p>
                 <h2>Mods, libs, and the server — one hub.</h2>
                 <p class="hero-copy">Free APKs and TvMenu Lib through Discord. Paid PCVR and Gtag builds live in the same room.</p>
+                <p class="hotkey-hint">Keys: <kbd>D</kbd> Discord · <kbd>L</kbd> Lib · <kbd>S</kbd> static</p>
             </header>
+
+            <section class="patch-card">
+                <h3>Patch notes</h3>
+                <ul>
+                    <li><span>v3</span> Version chip, last-seen embed, live pulse</li>
+                    <li><span>v3.1</span> Blood trail, boot log, D/L/S hotkeys</li>
+                    <li><span>v3.1</span> Pinned patch notes, static overlay, server online</li>
+                </ul>
+            </section>
 
             <section class="tabs-container action-grid">
                 <a href="#" class="tab-btn-pill card-apk" data-link="discord">

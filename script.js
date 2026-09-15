@@ -214,5 +214,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ping();
     setInterval(ping, 25000);
-});
 
+    // Boot log
+    const boot = document.getElementById("boot-log");
+    if (boot) {
+        const lines = ["LINKING DISCORD…", "KV / STATS OK", "LANYARD HANDSHAKE", "HUB v3.1 READY"];
+        boot.textContent = "";
+        lines.forEach((line, i) => {
+            setTimeout(() => { boot.textContent += line + "\n"; }, 180 * i);
+        });
+    }
+
+    // Blood trail
+    const canvas = document.getElementById("blood-trail");
+    if (canvas && window.matchMedia("(pointer:fine)").matches) {
+        const ctx = canvas.getContext("2d");
+        const dots = [];
+        const resize = () => { canvas.width = innerWidth; canvas.height = innerHeight; };
+        resize();
+        addEventListener("resize", resize);
+        addEventListener("mousemove", (e) => {
+            dots.push({ x: e.clientX, y: e.clientY, life: 1, r: 3 + Math.random() * 3 });
+            if (dots.length > 60) dots.shift();
+        });
+        (function tick() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (const d of dots) {
+                d.life -= 0.025;
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(180,0,20,${Math.max(d.life, 0)})`;
+                ctx.arc(d.x, d.y, d.r * d.life, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            for (let i = dots.length - 1; i >= 0; i--) if (dots[i].life <= 0) dots.splice(i, 1);
+            requestAnimationFrame(tick);
+        })();
+    }
+
+    // Hotkeys D / L / S
+    const discordInviteUrlHot = "https://discord.gg/chG2a3uyRY";
+    const mediafireLibUrlHot = "https://www.mediafire.com/file/s55mh4kz8zybxl1/libTvMenu.so/file";
+    document.addEventListener("keydown", (e) => {
+        if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "SELECT" || e.target.tagName === "TEXTAREA")) return;
+        const k = e.key.toLowerCase();
+        if (k === "d") window.open(discordInviteUrlHot, "_blank");
+        if (k === "l") {
+            window.open(mediafireLibUrlHot, "_blank");
+            const libModal = document.getElementById("lib-modal");
+            if (libModal) libModal.classList.add("active");
+        }
+        if (k === "s") {
+            document.body.classList.toggle("static-on");
+            const ov = document.getElementById("static-overlay");
+            if (ov) ov.hidden = !document.body.classList.contains("static-on");
+        }
+    });
+
+    // Server member count
+    const sc = document.getElementById("server-count");
+    if (sc) {
+        fetch("https://discord.com/api/guilds/1538740748709658694/widget.json")
+            .then((r) => r.json())
+            .then((d) => {
+                if (d.presence_count != null) sc.textContent = d.presence_count + " online";
+                else if (d.name) sc.textContent = d.name;
+            })
+            .catch(() => { sc.textContent = "live"; });
+    }
+
+    const staticBtn = document.getElementById("static-toggle");
+    function setStatic(on) {
+        document.body.classList.toggle("static-on", on);
+        const ov = document.getElementById("static-overlay");
+        if (ov) ov.hidden = !on;
+        if (staticBtn) staticBtn.classList.toggle("on", on);
+    }
+    if (staticBtn) staticBtn.addEventListener("click", () => {
+        setStatic(!document.body.classList.contains("static-on"));
+    });
+
+});
