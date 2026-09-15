@@ -22,7 +22,7 @@
         <div class="loader-content">
             <img src="logo.png" alt="" class="loader-logo">
             <div class="loader-bar"><span></span></div>
-            <h2>Tvman Hub</h2>
+            <h2 data-i18n="loadingTitle">Tvman Hub</h2>
             <pre class="boot-log" id="boot-log"></pre>
         </div>
     </div>
@@ -72,8 +72,8 @@
                 </div>
                 <h1 class="profile-name">Tvman</h1>
                 <div class="version-chip" title="Hub build">HUB v3.1</div>
-                <p class="member-line"><i class="fa-brands fa-discord"></i> <span id="server-count">…</span> in server</p>
-                <button type="button" class="static-toggle" id="static-toggle">Static overlay</button>
+                <p class="member-line"><i class="fa-brands fa-discord"></i> <span id="server-count">…</span> <span data-i18n="inServer">in server</span></p>
+                <button type="button" class="static-toggle" id="static-toggle" data-i18n="staticOverlay">Static overlay</button>
                 <div class="profile-handle pill-badge" id="discord-profile-link" role="button" tabindex="0">
                     <i class="fa-brands fa-discord"></i>
                     <span id="discord-username">@tvmangt</span>
@@ -85,7 +85,7 @@
             <div class="language-selector-box">
                 <div class="language-info">
                     <i class="fa-solid fa-globe"></i>
-                    <span>Language</span>
+                    <span data-i18n="languageLabel">Language</span>
                 </div>
                 <select id="language-select" class="language-dropdown" aria-label="Language">
                     <option value="en">English</option>
@@ -145,18 +145,18 @@
 
         <main class="main-panel">
             <header class="hero">
-                <p class="eyebrow">TVMAN COMMAND</p>
-                <h2>Mods, libs, and the server — one hub.</h2>
-                <p class="hero-copy">Free APKs and TvMenu Lib through Discord. Paid PCVR and Gtag builds live in the same room.</p>
-                <p class="hotkey-hint">Keys: <kbd>D</kbd> Discord · <kbd>L</kbd> Lib · <kbd>S</kbd> static</p>
+                <p class="eyebrow" data-i18n="eyebrow">TVMAN COMMAND</p>
+                <h2 data-i18n="heroTitle">Mods, libs, and the server — one hub.</h2>
+                <p class="hero-copy" data-i18n="heroCopy">Free APKs and TvMenu Lib through Discord. Paid PCVR and Gtag builds live in the same room.</p>
+                <p class="hotkey-hint" data-i18n="hotkeys">Keys: D Discord · L Lib · S static</p>
             </header>
 
             <section class="patch-card">
-                <h3>Patch notes</h3>
+                <h3 data-i18n="patchTitle">Patch notes</h3>
                 <ul>
-                    <li><span>v3</span> Version chip, last-seen embed, live pulse</li>
-                    <li><span>v3.1</span> Blood trail, boot log, D/L/S hotkeys</li>
-                    <li><span>v3.1</span> Pinned patch notes, static overlay, server online</li>
+                    <li><span>v3</span> <span data-i18n="patch1">Version chip, last-seen embed, live pulse</span></li>
+                    <li><span>v3.1</span> <span data-i18n="patch2">Blood trail, boot log, D/L/S hotkeys</span></li>
+                    <li><span>v3.1</span> <span data-i18n="patch3">Pinned patch notes, static overlay, server online</span></li>
                 </ul>
             </section>
 
@@ -216,7 +216,7 @@
 
             <section class="lower-row">
                 <div class="discord-server-embed-box">
-                    <div class="embed-box-title"><i class="fa-brands fa-discord"></i> Live Discord Server Widget</div>
+                    <div class="embed-box-title"><i class="fa-brands fa-discord"></i> <span data-i18n="widgetTitle">Live Discord Server Widget</span></div>
                     <iframe title="Discord server widget" src="https://discord.com/widget?id=1538740748709658694&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
 
@@ -236,8 +236,8 @@
                         <i class="fa-solid fa-arrow-right arrow-icon"></i>
                     </a>
                     <div class="note-card">
-                        <p>Support: TvmanMods@proton.me</p>
-                        <p>Lib download opens MediaFire, then join Discord for setup.</p>
+                        <p data-i18n="noteSupport">Support: TvmanMods@proton.me</p>
+                        <p data-i18n="noteLib">Lib download opens MediaFire, then join Discord for setup.</p>
                     </div>
                 </div>
             </section>
@@ -247,7 +247,7 @@
     <div class="modal-overlay" id="update-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2><i class="fa-solid fa-terminal"></i> Update History</h2>
+                <h2><i class="fa-solid fa-terminal"></i> <span data-i18n="updateHistory">Update History</span></h2>
                 <button class="close-btn" id="close-updates" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
@@ -286,12 +286,12 @@
             </div>
             <div class="modal-body" style="padding: 10px 20px 25px 20px;">
                 <i class="fa-solid fa-code" style="font-size: 40px; color: #ff2a2a; margin-bottom: 15px;"></i>
-                <h3 style="color: white; margin-bottom: 10px;">TvMenu Lib Downloaded!</h3>
-                <p style="color: #ccc; font-size: 14px; margin-bottom: 20px;">Your MediaFire download has started in a new tab. Join the community Discord server to view the setup instructions!</p>
+                <h3 style="color: white; margin-bottom: 10px;" data-i18n="libDone">TvMenu Lib Downloaded!</h3>
+                <p style="color: #ccc; font-size: 14px; margin-bottom: 20px;"><span data-i18n="libBody">Your MediaFire download has started in a new tab. Join the community Discord server to view the setup instructions!</span></p>
                 <a href="#" id="lib-discord-btn" class="tab-btn-pill" style="background-color: #5865F2; justify-content: center; text-decoration: none;">
                     <div class="btn-left" style="justify-content: center; width: 100%;">
                         <i class="fa-brands fa-discord icon-styled"></i>
-                        <span class="btn-title" style="color: white;">JOIN THE DISCORD TO DO THE REST</span>
+                        <span class="btn-title" style="color: white;" data-i18n="libJoin">JOIN THE DISCORD TO DO THE REST</span>
                     </div>
                 </a>
             </div>
